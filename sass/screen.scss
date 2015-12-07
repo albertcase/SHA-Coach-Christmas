@@ -24,6 +24,7 @@ img{
 body{
   font-family: '宋体', serif;
   font-size: 0.24rem;
+  line-height: 1.5;
   color: #331f19;
   background: #ededee url("../img/bg-2.png") bottom center no-repeat;
   background-size: 100%;
@@ -56,6 +57,7 @@ body{
   left: 0%;
   position: absolute;
   top: 0;
+  text-align: center;
   &.pin-1{
     z-index: 100;
   }
@@ -64,15 +66,14 @@ body{
   }
   .inner{
     position: absolute;
-    width: 86%;
-    left: 12%;
-    top: 5%;
+    margin: 2.4rem auto 0;
+    width: 100%;
   }
 }
 
 .buttons{
   position: relative;
-  @include size(2.5rem,0.86rem);
+  @include size(3.4rem,0.86rem);
   margin: 0.4rem auto 0.2rem;
   background: url("../img/button.png") no-repeat;
   background-size: 100%;
@@ -85,9 +86,17 @@ body{
     display: block;
     @include triangle-right(#473832,0.12rem,0.09rem);
     position: absolute;
-    right: 13%;
+    right: 0.3rem;
     top: 32%;
   }
+}
+.line{
+  @include size(4.21rem,0.15rem);
+  margin: 0.3rem auto 0.45rem;
+}
+.animate-gif{
+  @include size(6rem,6rem);
+  margin: 0 auto;
 }
 
 //for .pin-1
@@ -123,6 +132,67 @@ body{
   }
 
 }
+
+//for .pin-2
+.pin-2{
+  text-align: center;
+  .p2-1{
+
+  }
+  .p2-t1{
+    margin-top: 0.4rem;
+    font-size: 0.48rem;
+    font-weight: bold;
+    &.tt{
+      font-size: 0.57rem;
+    }
+  }
+  .p2-2{
+    font-size: 0.6rem;
+    font-weight: bold;
+  }
+  .p2-3{
+    font-size: 0.29rem;
+  }
+}
+
+.prize{
+  margin-top: 0.4rem;
+  font-size: 0.38rem;
+  .p3-t1{
+    display: block;
+    font-size: 0.59rem;
+  }
+  &.prize-2{
+    display: none;
+  }
+}
+
+//for pin-3
+//for pin-4
+//for pin-5
+.pin-5{
+  .p4-txt{
+    margin-top: 0.8rem;
+    font-size: 0.28rem;
+    strong{
+      display: block;
+    }
+  }
+}
+#form-contact{
+  input[type='text'],
+  input[type='number']{
+    @include size(5rem,0.8rem);
+    background: #f9f9f9;
+    border:#c0bcbb 1px solid;
+    margin-bottom: 0.5rem;
+    font-size: 0.32rem;
+    color: #331f19;
+    text-indent: 0.6rem;
+  }
+}
+
 
 //test
 #__bs_notify__{
