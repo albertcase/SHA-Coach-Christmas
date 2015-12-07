@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>遇见COACH圣诞好礼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" >
+    <link rel="stylesheet" type="text/css" href="css/screen.css"/>
+    <script type="text/javascript" src="js/jquery.min.js" ></script>
+    <script type="text/javascript" src="js/fabric.js"></script>
+    <!-- production-->
+    <!--<script type="text/javascript" src="dist/js/rem.js"></script>-->
+    <!--<script type="text/javascript" src="dist/js/common.js"></script>-->
+    <!-- development-->
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/service.js"></script>
+    <script type="text/javascript" src="js/wxshare.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<div class="loading" style="display: none;">
+    loading...
+</div>
+<div class="wrap">
+    <div class="logo">
+        <img src="img/logo.png" alt=""/>
+    </div>
+    <!-- Homepage 我要摇奖 -->
+    <div class="pin pin-1 current">
+        <div class="p1-4">
+            <h3 class="title">
+                感谢您<br>
+                在这一年的持续支持
+            </h3>
+            <p class="p1-des">
+                您一如既往的关注更是<br>
+                COACH前进的动力
+                <br>
+                <br>
+                <span class="small-font">在温馨的圣诞节，我们为您准备了惊喜好礼，拿起手机摇一摇，遇见最贴心的COACH圣诞礼遇</span>
+            </p>
+
+        </div>
+
+        <div class="p1-2">
+            跑马灯效果
+        </div>
+        <div class="p1-3 buttons">
+            我要摇奖
+        </div>
+        <div class="p1-5">
+            活动细则
+        </div>
+    </div>
+
+    <!-- 摇一摇，摇够5s-->
+    <div class="pin pin-2">
+        <canvas id="c"></canvas>
+
+        <div class="inner">
+            <div class="p2-1">
+                <img src="img/icon-shake-2.png" alt=""/>
+            </div>
+            <div class="p2-t1">
+                <span class="tt">摇一摇</span>收集加州巴旦木
+            </div>
+            <div class="p2-2">
+                <div class="progress">
+                    <div class="progress-bar">
+                        <div class="white"></div>
+                    </div>
+                </div>
+                <div class="progress-text">
+                    <span>0</span>秒
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 摇一摇结果页面-->
+    <div class="pin pin-3">
+        <!-- get the prize-->
+        <div class="p3-1">
+            <div class="p3-2 p3-txt">
+                什么都没摇到…
+                <span class="st">要加把劲哦！</span>
+            </div>
+            <div class="p3-3 p3-btn">
+                再摇一次
+            </div>
+            <!-- get prize-->
+            <div class="p3-4 p3-txt">
+                好厉害，
+                <span class="st">摇到满满的 <strong>阳光美味</strong> !</span>
+            </div>
+            <div class="p3-5 p3-btn">
+                马上申领
+            </div>
+        </div>
+        <div class="p3-buttons">
+            <span class="follow">关注官微</span>
+            <span class="share">炫耀成绩</span>
+        </div>
+        <div class="qrcode">
+            <img src="img/qrcode_for_gh.jpg" alt=""/>
+        </div>
+        <div class="share-img">
+            <img src="img/share.png" alt=""/>
+        </div>
+        <!-- no prize-->
+
+    </div>
+
+    <!-- 填写个人信息-->
+    <div class="pin pin-4">
+        <div class="inner">
+            <p class="p4-txt">
+                请填写个人信息，<br>
+                <strong>领取阳光美味！</strong>
+            </p>
+            <form action="post" id="form-contact">
+                <h3 class="form-des">填写个人信息</h3>
+                <div class="input-box input-box-name">
+                    <input type="text" name="name" class="input-name" placeholder="姓名"/>
+                </div>
+                <div class="input-box input-box-address">
+                    <input type="text" name="address" class="input-address" placeholder="地址"/>
+                </div>
+                <div class="input-box input-box-phone">
+                    <input type="number" name="phone" class="input-phone" placeholder="联系电话"/>
+                </div>
+
+                <div class="button btn-submit">
+                    确认提交
+                </div>
+                <div class="button btn-rule">
+                    活动申明
+                </div>
+            </form>
+            <div class="p4-activity">
+                <div class="p4-close"></div>
+                <h3>活动申明</h3>
+                <h4 class="title">活动时间</h4>
+                <p class="desc">2015年12月4日 – 12月25日</p>
+                <h4 class="title">活动规则</h4>
+                <p class="desc">活动期间，成功摇到满满阳光美味的用户，
+                    都有机会提交个人信息参与奖品申领；每个
+                    用户只可参与一次</p>
+                <h4 class="title">活动奖励</h4>
+                <p class="desc">成功提交真实、完整的个人信息的用户，均
+                    可获得美国加州巴旦木协会提供的精美小铁
+                    盒一枚。</p>
+                <div class="p4-4">
+                    <img src="img/prize-1.png" alt=""/>
+                </div>
+                <h4 class="title">奖品发放</h4>
+                <p class="desc">活动结束后的15个工作日内，工作人员将通
+                    过您预留下的姓名、地址和联系电话寄出奖品。 </p>
+                <p class="desc desc-last">
+                    此次活动最终解释权归Almond Board of Ca
+                    lifornia美国加州巴旦木协会所有</p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- 礼物页面-->
+    <div class="pin pin-5">
+        <div class="p5-3">
+            <img src="img/p5-3.jpg" alt=""/>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
