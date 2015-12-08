@@ -22,4 +22,17 @@ function isWeiXin() {
 jQuery(document).ready(function($){
 
 	gotoPin(0);
+	
+	var testShake = new Shake({
+		threshold: 10, //default velocity threshold for shake to register
+		timeout: 1000 //default interval between events
+	});
+	testShake.start();
+	window.addEventListener('shake', shakeEventDidOccur, false);
+	function shakeEventDidOccur () {
+
+		//put your own code here etc.
+		console.log(888);
+	}
+
 });

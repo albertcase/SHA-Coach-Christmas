@@ -1,6 +1,6 @@
 
 var service = function(){
-    var path = 'http://www.jiazhoubadanmu.com/almonds';
+    var path = '';
 
     var ajaxPop = {
         show:function(tips){
