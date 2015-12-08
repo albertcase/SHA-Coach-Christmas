@@ -20,21 +20,35 @@ img{
 .hide{
   display: none !important;
 }
+.error {
+  position: absolute;
+  display: block;
+  width: 5rem;
+  bottom: -20px;
+  left: 50%;
+  margin-left: -2.5rem;
+  text-align: left;
+}
 
 body{
   font:0.24rem/1.5 "SimSun",serif;
   color: #331f19;
-  background: #ededee url("../img/bg-2.png") bottom center no-repeat;
-  background-size: 100%;
 }
-
+.wrapper{
+  background: #fcfcff;
+  //background: #fcfcff url("../img/bg-2.png") no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
 //for wrap
 .wrap{
   z-index: 2;
   position: absolute;
   width: 100%;
   height: 100%;
-  min-height: 8rem;
+  min-height: 12rem;
   left: 0;
   top: 0;
   overflow: hidden;
@@ -64,7 +78,8 @@ body{
   }
   .inner{
     position: absolute;
-    margin: 2.4rem auto 0;
+    margin: 2.5rem auto 0;
+    //margin: 125px auto 0;
     width: 100%;
   }
 }
@@ -72,7 +87,7 @@ body{
 .buttons{
   position: relative;
   @include size(3.4rem,0.86rem);
-  margin: 0.4rem auto 0.2rem;
+  margin: 0.2rem auto 0.2rem;
   background: url("../img/button.png") no-repeat;
   background-size: 100%;
   font-size: 0.3rem;
@@ -93,8 +108,9 @@ body{
   margin: 0.3rem auto 0.45rem;
 }
 .animate-gif{
-  @include size(6rem,6rem);
+  @include size(7.5rem,6.64rem);
   margin: 0 auto;
+  overflow: hidden;
 }
 
 //for .pin-1
@@ -155,7 +171,7 @@ body{
 }
 
 .prize{
-  margin-top: 0.4rem;
+  margin-top: 0.1rem;
   font-size: 0.38rem;
   .p3-t1{
     display: block;
@@ -179,12 +195,16 @@ body{
   }
 }
 #form-contact{
+  .input-box{
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
   input[type='text'],
   input[type='number']{
     @include size(5rem,0.8rem);
     background: #f9f9f9;
     border:#c0bcbb 1px solid;
-    margin-bottom: 0.5rem;
+
     font-size: 0.32rem;
     color: #331f19;
     text-indent: 0.6rem;
