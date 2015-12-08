@@ -21,5 +21,5 @@ function isWeiXin() {
 
 jQuery(document).ready(function($){
 
-	gotoPin(5);
+	gotoPin(0);
 });

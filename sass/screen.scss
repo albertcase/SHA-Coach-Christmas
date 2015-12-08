@@ -22,9 +22,7 @@ img{
 }
 
 body{
-  font-family: '宋体', serif;
-  font-size: 0.24rem;
-  line-height: 1.5;
+  font:0.24rem/1.5 "SimSun",serif;
   color: #331f19;
   background: #ededee url("../img/bg-2.png") bottom center no-repeat;
   background-size: 100%;
@@ -103,7 +101,7 @@ body{
 .pin-1{
   .p1-4{
     @include size(5.8rem,7.25rem);
-    margin: 2.4rem auto 0rem;
+    margin: 2.2rem auto 0rem;
     background: url("../img/p1-1.png") no-repeat;
     background-size: 100%;
     text-align: center;
@@ -193,6 +191,23 @@ body{
   }
 }
 
+
+//for pin-6
+.pin-6{
+  .p6-1{
+    font-size: 0.42rem;
+  }
+  .p6-2{
+    margin-top: 0.4rem;
+    font-size: 0.42rem;
+  }
+  .line{
+    margin: 0.1rem auto 0.3rem;
+  }
+  .p6-3{
+    font-size: 0.22rem;
+  }
+}
 
 //test
 #__bs_notify__{
