@@ -16,6 +16,7 @@
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="js/service.js"></script>
     <script type="text/javascript" src="js/shake.js"></script>
+    <script type="text/javascript" src="js/marquee.js"></script>
     <script type="text/javascript" src="js/wxshare.js"></script>
     <script type="text/javascript" src="js/rem.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
@@ -30,7 +31,7 @@
             <img src="img/logo.png" alt=""/>
         </div>
         <!-- Homepage 我要摇奖 -->
-        <div class="pin pin-1 current">
+        <section class="pin pin-1 current">
             <div class="p1-4">
                 <h3 class="title">
                     感谢您<br>
@@ -45,23 +46,27 @@
                 </p>
 
             </div>
-
-            <div class="p1-2">
-                跑马灯效果
+            <div class="p1-2" id="marquee">
+                <ul class="list">
+                    <li>amber已经中奖1 </li>
+                    <li>amber已经中奖1 </li>
+                    <li>amber已经中奖1 </li>
+                </ul>
             </div>
+
             <div class="p1-3 buttons">
                 我要摇奖
             </div>
             <div class="p1-5">
                 活动细则
             </div>
-        </div>
+        </section>
 
         <!-- 摇一摇-->
-        <div class="pin pin-2">
+        <section class="pin pin-2">
             <div class="inner">
                 <div class="p2-1 animate-gif">
-                    <img src="img/gif/Coach_WeChatEmojis_Chinese_Mine_480x480.gif" alt=""/>
+                    <img src="img/gif/animate2.gif" alt=""/>
                 </div>
                 <div class="p2-t1">
                     <span class="tt">再</span>摇一摇
@@ -73,13 +78,13 @@
                     好包好礼赠不停
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- 摇一摇成功页面 -->
-        <div class="pin pin-3">
+        <section class="pin pin-3">
             <div class="inner">
                 <div class="p3-1 animate-gif">
-                    <img src="img/gif/Coach_WeChatEmojis_Chinese_HeyThere_480x480.gif" alt=""/>
+                    <img src="img/gif/animate3.gif" alt=""/>
                 </div>
                 <!-- 1000元prize-->
                 <div class="prize prize-1">
@@ -95,10 +100,10 @@
                     留下你的获奖信息
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- 摇一摇失败页面 -->
-        <div class="pin pin-4">
+        <section class="pin pin-4">
             <div class="inner">
                 <div class="p3-1 animate-gif">
                     <img src="img/gif/animate.gif" alt=""/>
@@ -112,10 +117,10 @@
                     再摇一次
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- 填写个人信息-->
-        <div class="pin pin-5">
+        <section class="pin pin-5">
             <div class="inner">
                 <p class="p4-txt">
                     圣诞老人准备出发了
@@ -136,13 +141,13 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </section>
 
         <!-- 礼物页面-->
-        <div class="pin pin-6">
+        <section class="pin pin-6">
             <div class="inner">
                 <div class="p6-1 animate-gif">
-                    <img src="img/gif/Coach_WeChatEmojis_Chinese_Seriously_480x480.gif" alt=""/>
+                    <img src="img/gif/animate4.gif" alt=""/>
                 </div>
                 <div class="p6-2">
                     提交成功
@@ -158,7 +163,7 @@
                     返回
                 </div>
             </div>
-        </div>
+        </section>
 
     </div>
 </div>

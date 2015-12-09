@@ -22,6 +22,31 @@ function isWeiXin() {
 jQuery(document).ready(function($){
 
 	gotoPin(0);
+	//跑马灯效果
+	//function Marquee(){
+	//	var wrapEle = $('.p1-2 .list');
+	//	var listEle = $('.p1-2 .list li');
+	//	var totalWidth = 0;
+	//	for(var i=0;i<listEle.length;i++){
+	//		totalWidth = totalWidth+listEle.eq(i).width()+12;
+	//	}
+	//	wrapEle.css('width',totalWidth);
+	//	var eleLeft = 0;
+	//	var animateLeft = setInterval(function(){
+	//		eleLeft++;
+	//		var  aaa = -5*eleLeft+'px';
+	//		wrapEle.css('left',aaa);
+	//		if(Math.abs(parseInt(aaa))>Math.abs(parseInt(totalWidth-$('.p1-2').width()))){
+	//			eleLeft = 0;
+	//		}
+	//	},500);
+	//	console.log(totalWidth);
+    //
+	//}
+	//Marquee();
+
+	$('#marquee .list').marquee();
+
 
 	//register shake
 	var testShake = new Shake({

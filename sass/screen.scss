@@ -136,9 +136,26 @@ body{
     font-size: 0.22rem;
   }
   .p1-2{
-    @include size(100%,0.5rem);
+    position: relative;
+    @include size(60%,0.5rem);
+    margin: 0 auto;
+    overflow: hidden;
     background: #dededf;
     text-align: center;
+    .list{
+      position: absolute;
+      left: 0px;
+      -webkit-transition: left 1s;
+      -moz-transition: left 1s;
+      -ms-transition: left 1s;
+      -o-transition: left 1s;
+      transition: left 1s;
+    }
+    li{
+      display: inline-block;
+      margin:0px 2px 0px 2px;
+      text-align: left;
+    }
   }
   .p1-5{
     font-size: 0.24rem;

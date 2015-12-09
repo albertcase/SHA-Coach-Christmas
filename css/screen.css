@@ -200,10 +200,27 @@ body {
   font-size: 0.22rem;
 }
 .pin-1 .p1-2 {
-  width: 100%;
+  position: relative;
+  width: 60%;
   height: 0.5rem;
+  margin: 0 auto;
+  overflow: hidden;
   background: #dededf;
   text-align: center;
+}
+.pin-1 .p1-2 .list {
+  position: absolute;
+  left: 0px;
+  -webkit-transition: left 1s;
+  -moz-transition: left 1s;
+  -ms-transition: left 1s;
+  -o-transition: left 1s;
+  transition: left 1s;
+}
+.pin-1 .p1-2 li {
+  display: inline-block;
+  margin: 0px 2px 0px 2px;
+  text-align: left;
 }
 .pin-1 .p1-5 {
   font-size: 0.24rem;
