@@ -93,12 +93,141 @@ body {
   color: #331f19;
 }
 
+.loading {
+  position: absolute;
+  z-index: 2;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  text-align: center;
+}
+.loading .inner {
+  width: 4.4rem;
+  height: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -1.5rem;
+  margin-left: -2.2rem;
+}
+.loading .l-logo {
+  width: 1.89rem;
+  height: 0.78rem;
+  margin: 0 auto;
+  -webkit-transform: translate(-5px);
+  -moz-transform: translate(-5px);
+  -ms-transform: translate(-5px);
+  -o-transform: translate(-5px);
+  transform: translate(-5px);
+  -webkit-animation: lefttoright linear 2s infinite;
+  -moz-animation: lefttoright linear 2s infinite;
+  animation: lefttoright linear 2s infinite;
+}
+.loading .icon-loading {
+  margin: 0.2rem auto;
+}
+.loading .icon-loading span {
+  display: inline-block;
+  width: 0.1rem;
+  height: 0.1rem;
+  background: #848484;
+  margin-right: 0.1rem;
+  border-radius: 100%;
+  -ms-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -o-border-radius: 100%;
+  -webkit-border-radius: 100%;
+}
+.loading .icon-loading span:nth-child(1) {
+  -webkit-animation: loading 1.5s infinite;
+  -moz-animation: loading 1.5s infinite;
+  animation: loading 1.5s infinite;
+}
+.loading .icon-loading span:nth-child(2) {
+  -webkit-animation: loading 1.5s infinite 0.5s;
+  -moz-animation: loading 1.5s infinite 0.5s;
+  animation: loading 1.5s infinite 0.5s;
+}
+.loading .icon-loading span:nth-child(3) {
+  -webkit-animation: loading 1.5s infinite 1s;
+  -moz-animation: loading 1.5s infinite 1s;
+  animation: loading 1.5s infinite 1s;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    background: #000;
+  }
+  66% {
+    background: #848484;
+  }
+}
+@-moz-keyframes loading {
+  0% {
+    background: #000;
+  }
+  66% {
+    background: #848484;
+  }
+}
+@-o-keyframes loading {
+  0% {
+    background: #000;
+  }
+  66% {
+    background: #848484;
+  }
+}
+@keyframes loading {
+  0% {
+    background: #000;
+  }
+  66% {
+    background: #848484;
+  }
+}
+@-webkit-keyframes lefttoright {
+  0% {
+    -webkit-transform: translate(-5px);
+  }
+  50% {
+    -webkit-transform: translate(5px);
+  }
+}
+@-moz-keyframes lefttoright {
+  0% {
+    -moz-transform: translate(-5px);
+  }
+  50% {
+    -moz-transform: translate(5px);
+  }
+}
+@-o-keyframes lefttoright {
+  0% {
+    -o-transform: translate(-5px);
+  }
+  50% {
+    -o-transform: translate(5px);
+  }
+}
+@keyframes lefttoright {
+  0% {
+    -webkit-transform: translate(-5px);
+    transform: translate(-5px);
+  }
+  50% {
+    -webkit-transform: translate(5px);
+    transform: translate(5px);
+  }
+}
 .wrapper {
   background: #fcfcff;
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
   position: absolute;
+  z-index: 1;
 }
 
 .wrap {
@@ -121,7 +250,7 @@ body {
 }
 
 .pin {
-  display: none;
+  opacity: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -129,12 +258,15 @@ body {
   position: absolute;
   top: 0;
   text-align: center;
-}
-.pin.pin-1 {
-  z-index: 100;
+  transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  -webkit-transition: all 0.8s;
 }
 .pin.current {
-  display: block;
+  opacity: 1;
+  z-index: 100;
 }
 .pin .inner {
   position: absolute;
@@ -322,6 +454,66 @@ body {
 }
 .pin-6 .p6-3 {
   font-size: 0.22rem;
+}
+
+.pin-7 .inner {
+  margin: 3.5rem auto 0;
+}
+.pin-7 .back {
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
+}
+.pin-7 .back:before {
+  content: '';
+  display: block;
+  width: 0.16rem;
+  height: 0.04rem;
+  background: #331f19;
+  position: absolute;
+  top: 0.2rem;
+  left: -0.2rem;
+  -webkit-transform-origin: 0% 50%;
+  -moz-transform-origin: 0% 50%;
+  -ms-transform-origin: 0% 50%;
+  -o-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.pin-7 .back:after {
+  content: '';
+  display: block;
+  width: 0.16rem;
+  height: 0.04rem;
+  background: #331f19;
+  position: absolute;
+  top: 0.2rem;
+  left: -0.2rem;
+  -webkit-transform-origin: 0% 50%;
+  -moz-transform-origin: 0% 50%;
+  -ms-transform-origin: 0% 50%;
+  -o-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.pin-7 .title {
+  font-size: 0.5rem;
+}
+.pin-7 .content {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 0.24rem;
 }
 
 #__bs_notify__ {
