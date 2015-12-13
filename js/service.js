@@ -1,6 +1,6 @@
 
 var service = function(){
-    var path = '';
+    var path = 'http://coach.samesamechina.com/';
 
     var ajaxPop = {
         show:function(tips){
@@ -17,12 +17,13 @@ var service = function(){
             }
         }
     };
-    var isPrize = function(number,callback){
+
+
+    var isPrize = function(callback){
         ajaxPop.show();
         $.ajax({
-            url:path+'/shake/result/json',
+            url:path+'/Request.php?model=lottery',
             type:'POST',
-            data:{number:number},
             dataType:'json',
             success:function(data){
                 ajaxPop.hide();
@@ -33,10 +34,10 @@ var service = function(){
     var formSubmit = function(name,phone,callback){
         ajaxPop.show();
         $.ajax({
-            url:path+'/shake/info/json',
+            url:path+'/Request.php?model=saveinfo',
             type:'POST',
             dataType:'json',
-            data:{name:name,phone:phone},
+            data:{name:name,mobile:phone},
             success:function(data){
                 ajaxPop.hide();
                 return callback(data);

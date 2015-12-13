@@ -43,7 +43,7 @@ function loadImg() {
 			//Hide the loading page
 			var loadtime = setTimeout(function(){
 				$('.loading').remove();
-				gotoPin(6);
+				gotoPin(3);
 				//跑马灯效果
 				$('#marquee .list').marquee();
 				clearTimeout(loadtime);
@@ -71,6 +71,29 @@ jQuery(document).ready(function($){
 		//put your own code here etc.
 		if($('.pin-2').hasClass('current')){
 			console.log('start api');
+			service.isPrize(function(data){
+				console.log(data);
+				//code msg
+				//0 未登录
+				//1 礼券
+				//2 卡包
+				//3 未中奖
+				if(data.code==1){
+					//1 礼券
+					gotoPin(2);
+					$('.pin-3').addClass('getcoupon');
+				}else if(data.code==2){
+					//2 卡包
+					gotoPin(2);
+					$('.pin-3').removeClass('getcoupon');
+				}else if(data.code==3){
+					//3 未中奖
+					gotoPin(3);
+				}else{
+					//重新刷新
+					window.location.reload();
+				}
+			});
 		}
 	}
 
@@ -94,7 +117,7 @@ jQuery(document).ready(function($){
 			}
 		}else if($(this).hasClass('p4-5')){
 			//go shake page
-			gotoPin(1);
+			$('.share').addClass('show');
 		}
 	});
 
@@ -112,7 +135,16 @@ jQuery(document).ready(function($){
 
 //test
 	$('.p2-3').on('click',function(){
-		gotoPin(2);
+		service.isPrize(function(data){
+			console.log(data);
+			gotoPin(2);
+			if(data.code){
+				//	get prize
+				$('.pin-3').removeClass('getcoupon');
+			}else{
+				$('.pin-3').addClass('getcoupon');
+			}
+		});
 	});
 
 

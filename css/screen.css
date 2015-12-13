@@ -423,7 +423,14 @@ body {
   display: block;
   font-size: 0.59rem;
 }
-.prize.prize-2 {
+
+.pin-3 .prize-2 {
+  display: none;
+}
+.pin-3.getcoupon .prize-2 {
+  display: block;
+}
+.pin-3.getcoupon .prize-1 {
   display: none;
 }
 
