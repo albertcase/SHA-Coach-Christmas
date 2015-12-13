@@ -88,6 +88,14 @@ img {
   text-align: left;
 }
 
+.qrcode {
+  width: 4.51rem;
+  height: 6.46rem;
+  margin: 2rem auto 0;
+  position: relative;
+  z-index: 100;
+}
+
 body {
   font: 0.24rem/1.5 "SimSun",serif;
   color: #331f19;

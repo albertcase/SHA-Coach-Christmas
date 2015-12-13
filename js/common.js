@@ -43,7 +43,7 @@ function loadImg() {
 			//Hide the loading page
 			var loadtime = setTimeout(function(){
 				$('.loading').remove();
-				gotoPin(0);
+				//gotoPin(0);
 				//跑马灯效果
 				$('#marquee .list').marquee();
 				clearTimeout(loadtime);
@@ -103,6 +103,8 @@ jQuery(document).ready(function($){
 			console.log(1);
 			//go shake page
 			gotoPin(1);
+		}else if($(this).hasClass('gocoupon')){
+			addCard(1);
 		}else if($(this).hasClass('p3-5')){
 			//go form page
 			gotoPin(4);
@@ -140,12 +142,25 @@ jQuery(document).ready(function($){
 	$('.p2-3').on('click',function(){
 		service.isPrize(function(data){
 			console.log(data);
-			gotoPin(2);
-			if(data.code){
-				//	get prize
-				$('.pin-3').removeClass('getcoupon');
-			}else{
+			//code msg
+			//0 未登录
+			//1 礼券
+			//2 卡包
+			//3 未中奖
+			if(data.code==1){
+				//1 礼券
+				gotoPin(2);
 				$('.pin-3').addClass('getcoupon');
+			}else if(data.code==2){
+				//2 卡包
+				gotoPin(2);
+				$('.pin-3').removeClass('getcoupon');
+			}else if(data.code==3){
+				//3 未中奖
+				gotoPin(3);
+			}else{
+				//重新刷新
+				alert(data.msg);
 			}
 		});
 	});

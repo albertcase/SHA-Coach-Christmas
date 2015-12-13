@@ -1,6 +1,6 @@
 
 var service = function(){
-    var path = 'http://coach.samesamechina.com/';
+    var path = 'http://coach.samesamechina.com';
 
     var ajaxPop = {
         show:function(tips){

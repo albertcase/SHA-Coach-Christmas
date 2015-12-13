@@ -1,5 +1,9 @@
 <?php
+/*
 session_start();
+include_once ('./config/database.php');
+include_once ('./config/Pdb.php');
+include_once ('./config/emoji.php');
 if (!isset($_SESSION['user_id'])) {
     Header("Location:http://oauth.curio.im/v1/wx/web/auth/d36cfb23-9430-4b11-80e5-ae6b0c706ab8");
     exit;
@@ -8,6 +12,10 @@ if (!isset($_SESSION['user_id'])) {
 $info = file_get_contents("http://api.curio.im/v2/wx/users/".$_SESSION['openid']."?access_token=08ecb2077e158fd621a1f175e22442e8");
 $info = json_decode($info, true);
 
+$db = Pdb::getDb();
+$sql="select * from (SELECT * from `coach_xmas_lottery` WHERE lottery =1) a left join `coach_xmas_info` b on a.uid = b.id";
+$lotteryList = $db->getAll($sql,true);
+*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,6 +39,7 @@ $info = json_decode($info, true);
     <script type="text/javascript" src="js/wxshare.js"></script>
     <script type="text/javascript" src="js/rem.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/emoji.css" />
 </head>
 <body>
 <div class="loading">
@@ -54,6 +63,10 @@ $info = json_decode($info, true);
         <div class="logo">
             <img src="img/logo.png" alt=""/>
         </div>
+        <!-- qrcode-->
+        <section class="qrcode">
+            <img src="img/qrcode.png" alt=""/>
+        </section>
         <!-- Homepage 我要摇奖 -->
         <section class="pin pin-1">
             <div class="p1-4">
@@ -73,6 +86,16 @@ $info = json_decode($info, true);
             <div class="marquee-wrap">
                 <div class="p1-2" id="marquee">
                     <ul class="list">
+                        <?php
+                        if (!$lotteryList) {
+                            echo '<li>目前还没有人中奖</li>';
+                        } else {
+                            for ($i = 0; $i < count($lotteryList); $i++) {
+                                $name = json_decode($lotteryList[$i]['basename'], true);
+                                echo '<li>'.emoji_unified_to_html($name['name']).'已经中奖Coach礼包</li>';
+                            }
+                        }
+                        ?>
                         <li>amber已经中奖1 </li>
                         <li>amber已经中奖1 </li>
                         <li>amber已经中奖1 </li>
@@ -277,6 +300,7 @@ function addCard(i) {
     }); 
 
 };
+
 </script>
 </body>
 </html>

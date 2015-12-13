@@ -6,6 +6,28 @@ $_POST = $_REQUEST;
 $db = Pdb::getDb();
 if (isset($_POST['model'])) {
 	switch ($_POST['model']) {
+		case 'status':
+			if (!isset($_SESSION['user_id'])) {
+			    print json_encode(array("code"=>0,"msg"=>"请先登录"));
+			    exit;
+			}
+			$sql="SELECT status from `coach_xmas_info` WHERE id = ".intval($_SESSION['user_id']);
+			$status = $db->getOne($sql);
+			print json_encode(array("code"=>1,"msg"=>$status));
+			exit;
+			break;
+
+		case 'lotterylist':
+			if (!isset($_SESSION['user_id'])) {
+			    print json_encode(array("code"=>0,"msg"=>"请先登录"));
+			    exit;
+			}
+			$sql="select * from (SELECT * from `coach_xmas_lottery` WHERE lottery =1) a left join `coach_xmas_info` b on a.uid = b.id";
+			$result = $db->getAll($sql,true);
+			print json_encode(array("code"=>1,"msg"=>$result));
+			exit;
+			break;
+
 		case 'saveinfo':
 			if (!isset($_SESSION['user_id'])) {
 			    print json_encode(array("code"=>0,"msg"=>"请先登录"));
@@ -45,6 +67,17 @@ if (isset($_POST['model'])) {
 			    exit;
 			}
 			break;
+
+		case 'share':
+			if (!isset($_SESSION['user_id'])) {
+			    print json_encode(array("code"=>0,"msg"=>"请先登录"));
+			    exit;
+			}
+			$sql = "UPDATE `coach_xmas_info` SET status = 1 WHERE id = ".intval($_SESSION['user_id']);
+			print json_encode(array("code"=>1,"msg"=>"分享成功"));
+			exit;
+			break;
+
 		default:
 			# code...
 			print json_encode(array("code"=>9999,"msg"=>"No Model"));
