@@ -299,12 +299,23 @@ body{
     display: block;
     font-size: 0.59rem;
   }
-  &.prize-2{
-    display: none;
-  }
 }
 
 //for pin-3
+.pin-3{
+  .prize-2{
+    display: none;
+  }
+  &.getcoupon{
+    .prize-2{
+      display: block;
+    }
+    .prize-1{
+      display: none;
+    }
+  }
+}
+
 //for pin-4
 //for pin-5
 .pin-5{
