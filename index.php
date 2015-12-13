@@ -1,5 +1,5 @@
 <?php
-/*
+
 session_start();
 include_once ('./config/database.php');
 include_once ('./config/Pdb.php');
@@ -15,7 +15,7 @@ $info = json_decode($info, true);
 $db = Pdb::getDb();
 $sql="select * from (SELECT * from `coach_xmas_lottery` WHERE lottery =1) a left join `coach_xmas_info` b on a.uid = b.id";
 $lotteryList = $db->getAll($sql,true);
-*/
+
 ?>
 <!DOCTYPE html>
 <html>
