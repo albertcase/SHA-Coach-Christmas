@@ -43,7 +43,7 @@ function loadImg() {
 			//Hide the loading page
 			var loadtime = setTimeout(function(){
 				$('.loading').remove();
-				gotoPin(3);
+				gotoPin(0);
 				//跑马灯效果
 				$('#marquee .list').marquee();
 				clearTimeout(loadtime);
@@ -107,13 +107,16 @@ jQuery(document).ready(function($){
 			//go form page
 			gotoPin(4);
 		}else if($(this).hasClass('btn-submit')){
-			//submit the form
-			//var name =
-			//service.formSubmit(name,number,function(){
-            //
-			//});
 			if (service.formValidation()){
 				console.log('validated');
+				//submit the form
+				var name =$('.input-name').val();
+				var number =$('.input-phone').val();
+				service.formSubmit(name,number,function(){
+					console.log('success');
+					//go to success page
+					gotoPin(5);
+				});
 			}
 		}else if($(this).hasClass('p4-5')){
 			//go shake page
