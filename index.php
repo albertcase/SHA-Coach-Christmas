@@ -64,9 +64,11 @@ $lotteryList = $db->getAll($sql,true);
             <img src="img/logo.png" alt=""/>
         </div>
         <!-- qrcode-->
+        <?php if($info['data']['subscribe']==1) {?>
         <section class="qrcode">
             <img src="img/qrcode.png" alt=""/>
         </section>
+        <?php }?>
         <!-- Homepage 我要摇奖 -->
         <section class="pin pin-1">
             <div class="p1-4">
