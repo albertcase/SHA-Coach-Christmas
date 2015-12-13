@@ -32,8 +32,21 @@ $info = json_decode($info, true);
     <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
-<div class="loading" style="display: none;">
-    loading...
+<div class="loading">
+    <div class="inner">
+        <div class="l-logo">
+            <img src="img/loading-logo.png" alt=""/>
+        </div>
+        <div class="icon-loading">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <p class="des-loading">
+            目前涌入的小伙伴过多<br>
+            页面正在跳转中，请耐心等待。
+        </p>
+    </div>
 </div>
 <div class="wrapper">
     <div class="wrap">
@@ -41,7 +54,7 @@ $info = json_decode($info, true);
             <img src="img/logo.png" alt=""/>
         </div>
         <!-- Homepage 我要摇奖 -->
-        <section class="pin pin-1 current">
+        <section class="pin pin-1">
             <div class="p1-4">
                 <h3 class="title">
                     感谢您<br>
@@ -66,7 +79,7 @@ $info = json_decode($info, true);
                 </div>
             </div>
             <div class="p1-3 buttons">
-                我要摇奖
+                <!--我要摇奖-->
             </div>
             <div class="p1-5">
                 活动细则
@@ -97,6 +110,7 @@ $info = json_decode($info, true);
                 <div class="p3-1 animate-gif">
                     <img src="img/gif/animate3.gif" alt=""/>
                 </div>
+
                 <!-- get prize-->
                 <div class="prize prize-1">
                     <div class="pz-1">
@@ -132,7 +146,7 @@ $info = json_decode($info, true);
                     你没有摇到礼物
                 </div>
                 <div class="p4-5 buttons">
-                    再摇一次
+                    <!--再摇一次-->
                 </div>
             </div>
         </section>
@@ -155,7 +169,7 @@ $info = json_decode($info, true);
                         <input type="number" name="phone" class="input-phone" placeholder="手机/MOBILE PHONE"/>
                     </div>
                     <div class="buttons btn-submit">
-                        提交
+                        <!--提交-->
                     </div>
                 </form>
             </div>
@@ -174,15 +188,43 @@ $info = json_decode($info, true);
                     <img src="img/line.png" alt=""/>
                 </div>
                 <div class="p6-3">
-                    返回首页<br>
-                    还可以领取现金抵用券哦
+                    还可以领取COACH圣诞礼券哦
                 </div>
-                <div class="buttons btn-back">
-                    返回
+                <div class="buttons gocoupon">
+                    <!--立刻去领券-->
                 </div>
             </div>
         </section>
 
+        <!-- 活动细则-->
+        <section class="pin pin-7">
+            <div class="inner">
+                <div class="back">返回</div>
+                <h3 class="title">活动细则</h3>
+                <div class="line">
+                    <img src="img/line.png" alt="">
+                </div>
+                <p class="content">
+                    参与本活动无需以购买蔻驰产品或服务为前提。购买我们的产品或服务并不会增加你在本次活动中的获胜机会。
+                    <br>
+                    <br>
+
+                    1. 参与资格: 任何年满18岁的中国大陆公民均有资格参与蔻驰微信“摇一摇，遇见COACH圣诞好礼”活动（以下简称本活动）。
+                    蔻驰在中国的雇员、经理和各级代表及其直系亲属（父母，配偶，子女，兄弟姐妹）及家庭成员不得参与本次活动。本次活动将严格遵守中华人民共和国的相关法律及法规。
+                    参与本活动表示你同意无条件完全遵守本活动细则以及活动主办方的相关决定。奖品的获取是在参与者完成了所有规定任务之后按完成时间优先排序选取的。
+
+                    <br>
+                    <br>
+                    2. 活动主办方: 蔻驰贸易（上海）有限公司
+                </p>
+                <div class="buttons p1-3">
+                    <!--我要摇奖-->
+                </div>
+            </div>
+        </section>
+        <div class="share">
+            <img src="img/share-3.png" alt=""/>
+        </div>
     </div>
 </div>
 <?php
