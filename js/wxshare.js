@@ -74,6 +74,14 @@ jQuery(document).ready(function(){
             dataUrl: '',
             success: function () {
                 console.log('share success to friend');
+                service.addChance(function(data){
+                    if(data.code){
+                        alert('获得一次抽奖机会');
+                    }else{
+                        alert('未登录');
+                    }
+                });
+
             },
             cancel: function () {
 
@@ -93,6 +101,13 @@ jQuery(document).ready(function(){
             imgUrl: obj.img,
             success: function () {
                 console.log('share success to timeline');
+                service.addChance(function(data){
+                    if(data.code){
+                        alert('获得一次抽奖机会');
+                    }else{
+                        alert('未登录');
+                    }
+                });
             },
             cancel: function () {
 

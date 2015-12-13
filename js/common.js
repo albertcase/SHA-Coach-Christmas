@@ -102,9 +102,22 @@ jQuery(document).ready(function($){
 //	click buttons==>
 	$('.buttons').on('click', function(){
 		if($(this).hasClass('p1-3')){
-			console.log(1);
 			//go shake page
-			gotoPin(1);
+			service.isShake(function(data){
+				if(data.code){
+					if(data.msg){
+					//	has chance to shake
+						gotoPin(1);
+					}else{
+					//no shake chance,please share again
+						$('.share').addClass('show');
+					}
+				}else{
+					//未登录
+					alert('未登录');
+				}
+			});
+
 		}else if($(this).hasClass('gocoupon')){
 			addCard(1);
 		}else if($(this).hasClass('p3-5')){
