@@ -135,7 +135,7 @@ body{
   position: absolute;
   top: 0;
   text-align: center;
-  @include vendor-prefix(transition,all 0.8s);
+  @include vendor-prefix(transition,opacity 0.8s);
   &.current{
     //display: block;
     opacity: 1;
@@ -153,20 +153,39 @@ body{
   position: relative;
   @include size(3.4rem,0.86rem);
   margin: 0.2rem auto 0rem;
-  background: url("../img/button.png") no-repeat;
+  background: url("../img/btn-sprite.png") no-repeat;
   background-size: 100%;
   font-size: 0.3rem;
   color: #24160f;
   text-align: center;
   line-height: 0.7rem;
-  &:after{
-    content: '';
-    display: block;
-    @include triangle-right(#473832,0.12rem,0.09rem);
-    position: absolute;
-    right: 0.3rem;
-    top: 32%;
+  //&:after{
+  //  content: '';
+  //  display: block;
+  //  @include triangle-right(#473832,0.12rem,0.09rem);
+  //  position: absolute;
+  //  right: 0.3rem;
+  //  top: 32%;
+  //}
+  &.p1-3{
+    left: 0.4rem;
+    background-position: 0% 19%;
   }
+  &.p3-5{
+    background-position: 0% 100%;
+  }
+  &.p4-5{
+    background-position: 0% 46%;
+    left: 0.3rem;
+  }
+  &.btn-submit{
+    background-position: 0% 72%;
+    left: 0.4rem;
+  }
+  &.gocoupon{
+    left: 0.3rem;
+  }
+
 }
 .line{
   @include size(4.21rem,0.15rem);
@@ -305,9 +324,10 @@ body{
   input[type='text'],
   input[type='number']{
     @include size(5rem,0.8rem);
-    background: #f9f9f9;
+    background: #fff;
     border:#c0bcbb 1px solid;
-
+    -webkit-appearance: none;
+    @include vendor-prefix(border-radius,0px);
     font-size: 0.32rem;
     color: #331f19;
     text-indent: 0.6rem;
@@ -318,17 +338,21 @@ body{
 //for pin-6
 .pin-6{
   .p6-1{
+    height: 6rem;
     font-size: 0.42rem;
+    img{
+      height: 100%;
+    }
   }
   .p6-2{
-    margin-top: 0.4rem;
+    margin-top: 0.2rem;
     font-size: 0.42rem;
   }
   .line{
     margin: 0.1rem auto 0.3rem;
   }
   .p6-3{
-    font-size: 0.22rem;
+    font-size: 0.3rem;
   }
 }
 

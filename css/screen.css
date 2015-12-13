@@ -258,11 +258,11 @@ body {
   position: absolute;
   top: 0;
   text-align: center;
-  transition: all 0.8s;
-  -ms-transition: all 0.8s;
-  -moz-transition: all 0.8s;
-  -o-transition: all 0.8s;
-  -webkit-transition: all 0.8s;
+  transition: opacity 0.8s;
+  -ms-transition: opacity 0.8s;
+  -moz-transition: opacity 0.8s;
+  -o-transition: opacity 0.8s;
+  -webkit-transition: opacity 0.8s;
 }
 .pin.current {
   opacity: 1;
@@ -279,22 +279,30 @@ body {
   width: 3.4rem;
   height: 0.86rem;
   margin: 0.2rem auto 0rem;
-  background: url("../img/button.png") no-repeat;
+  background: url("../img/btn-sprite.png") no-repeat;
   background-size: 100%;
   font-size: 0.3rem;
   color: #24160f;
   text-align: center;
   line-height: 0.7rem;
 }
-.buttons:after {
-  content: '';
-  display: block;
-  border-left: #473832 0.12rem solid;
-  border-top: transparent 0.09rem solid;
-  border-bottom: transparent 0.09rem solid;
-  position: absolute;
-  right: 0.3rem;
-  top: 32%;
+.buttons.p1-3 {
+  left: 0.4rem;
+  background-position: 0% 19%;
+}
+.buttons.p3-5 {
+  background-position: 0% 100%;
+}
+.buttons.p4-5 {
+  background-position: 0% 46%;
+  left: 0.3rem;
+}
+.buttons.btn-submit {
+  background-position: 0% 72%;
+  left: 0.4rem;
+}
+.buttons.gocoupon {
+  left: 0.3rem;
 }
 
 .line {
@@ -435,25 +443,35 @@ body {
 #form-contact input[type='number'] {
   width: 5rem;
   height: 0.8rem;
-  background: #f9f9f9;
+  background: #fff;
   border: #c0bcbb 1px solid;
+  -webkit-appearance: none;
+  border-radius: 0px;
+  -ms-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -o-border-radius: 0px;
+  -webkit-border-radius: 0px;
   font-size: 0.32rem;
   color: #331f19;
   text-indent: 0.6rem;
 }
 
 .pin-6 .p6-1 {
+  height: 6rem;
   font-size: 0.42rem;
 }
+.pin-6 .p6-1 img {
+  height: 100%;
+}
 .pin-6 .p6-2 {
-  margin-top: 0.4rem;
+  margin-top: 0.2rem;
   font-size: 0.42rem;
 }
 .pin-6 .line {
   margin: 0.1rem auto 0.3rem;
 }
 .pin-6 .p6-3 {
-  font-size: 0.22rem;
+  font-size: 0.3rem;
 }
 
 .pin-7 .inner {

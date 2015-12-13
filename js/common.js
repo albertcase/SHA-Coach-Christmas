@@ -43,7 +43,7 @@ function loadImg() {
 			//Hide the loading page
 			var loadtime = setTimeout(function(){
 				$('.loading').remove();
-				gotoPin(0);
+				gotoPin(6);
 				//跑马灯效果
 				$('#marquee .list').marquee();
 				clearTimeout(loadtime);
