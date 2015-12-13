@@ -180,6 +180,16 @@ jQuery(document).ready(function($){
 		});
 	});
 
+	$('.p2-t1').on('click',function(){
+		service.addChance(function(data){
+			if(data.code){
+				alert('获得一次抽奖机会');
+			}else{
+				alert('未登录');
+			}
+		});
+	});
+
 
 
 
