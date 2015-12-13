@@ -1,3 +1,5 @@
 .idea
 .sass-cache
+config/database.php
 node_modules
+puppet

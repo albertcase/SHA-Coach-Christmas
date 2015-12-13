@@ -1,10 +1,10 @@
 <?php
-if (!isset($_COOKIE['openid'])) {
-    Header("Location:http://oauth.curio.im/v1/wx/web/auth/c267f514-04c8-416c-a692-14497ee002bb");
+if (!isset($_SESSION['user_id'])) {
+    Header("Location:http://oauth.curio.im/v1/wx/web/auth/d36cfb23-9430-4b11-80e5-ae6b0c706ab8");
     exit;
 }
 //判断是否关注
-$info = file_get_contents("http://api.curio.im/v2/wx/users/".$_COOKIE['openid']."?access_token=08ecb2077e158fd621a1f175e22442e8");
+$info = file_get_contents("http://api.curio.im/v2/wx/users/".$_SESSION['openid']."?access_token=08ecb2077e158fd621a1f175e22442e8");
 $info = json_decode($info, true);
 
 ?>
@@ -183,17 +183,7 @@ $access_token = '08ecb2077e158fd621a1f175e22442e8';
 $api_url = 'http://api.curio.im/v2/wx/card/js/add/json?access_token='. $access_token;
 // 参数数组
 $data[] = array(
-        'card_id' => 'pKCDxjmUZvqBsNvy-D3ymTZlkgJ8',
-        'code' => '',
-        'openid' => ''
-);
-$data[] = array(
-        'card_id' => 'pKCDxjp1y4sa271dFPhdRySeTY0E',
-        'code' => '',
-        'openid' => ''
-);
-$data[] = array(
-        'card_id' => 'pKCDxjp3X2kx9xqFVU-WFqXBlgKQ',
+        'card_id' => 'pKCDxjlrh6tQ8sEDiZl9eAmKcXqA',
         'code' => '',
         'openid' => ''
 );
@@ -220,19 +210,19 @@ function addCard(i) {
         }],
         success: function(res) {
             var cardList = res.cardList;
-            alert(JSON.stringfiy(res));
+            //alert(JSON.stringfiy(res));
         },
         fail: function(res) {
-            alert(JSON.stringfiy(res));
+            //alert(JSON.stringfiy(res));
         },
         complete: function(res) {
-            alert(JSON.stringfiy(res));
+            //alert(JSON.stringfiy(res));
         },
         cancel: function(res) {
-            alert(JSON.stringfiy(res));
+            //alert(JSON.stringfiy(res));
         },
         trigger: function(res) {
-            alert(JSON.stringfiy(res));
+            //alert(JSON.stringfiy(res));
         }
     }); 
 
