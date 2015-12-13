@@ -137,7 +137,14 @@ jQuery(document).ready(function($){
 			}
 		}else if($(this).hasClass('p4-5')){
 			//go shake page
-			$('.share').addClass('show');
+			//$('.share').addClass('show');
+			service.addChance(function(data){
+				if(data.code){
+					alert('获得一次抽奖机会');
+				}else{
+					alert('未登录');
+				}
+			});
 		}
 	});
 
@@ -182,6 +189,7 @@ jQuery(document).ready(function($){
 
 	$('.p2-t1').on('click',function(){
 		service.addChance(function(data){
+			alert(data.code);
 			if(data.code){
 				alert('获得一次抽奖机会');
 			}else{
