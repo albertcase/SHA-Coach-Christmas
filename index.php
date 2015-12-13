@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['user_id'])) {
     Header("Location:http://oauth.curio.im/v1/wx/web/auth/d36cfb23-9430-4b11-80e5-ae6b0c706ab8");
     exit;
