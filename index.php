@@ -64,7 +64,7 @@ $lotteryList = $db->getAll($sql,true);
             <img src="img/logo.png" alt=""/>
         </div>
         <!-- qrcode-->
-        <?php if($info['data']['subscribe']==1) {?>
+        <?php if($info['data']['subscribe']==0) {?>
         <section class="qrcode">
             <img src="img/qrcode.png" alt=""/>
         </section>
