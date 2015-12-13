@@ -6,6 +6,13 @@ $_POST = $_REQUEST;
 $db = Pdb::getDb();
 if (isset($_POST['model'])) {
 	switch ($_POST['model']) {
+		case 'status':
+			if (!isset($_SESSION['user_id'])) {
+			    print json_encode(array("code"=>0,"msg"=>"请先登录"));
+			    exit;
+			}
+			break;
+			
 		case 'saveinfo':
 			if (!isset($_SESSION['user_id'])) {
 			    print json_encode(array("code"=>0,"msg"=>"请先登录"));
@@ -45,6 +52,9 @@ if (isset($_POST['model'])) {
 			    exit;
 			}
 			break;
+
+		case 'share':
+
 		default:
 			# code...
 			print json_encode(array("code"=>9999,"msg"=>"No Model"));
