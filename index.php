@@ -98,9 +98,6 @@ $lotteryList = $db->getAll($sql,true);
                             }
                         }
                         ?>
-                        <li>amber已经中奖1 </li>
-                        <li>amber已经中奖1 </li>
-                        <li>amber已经中奖1 </li>
                     </ul>
                 </div>
             </div>

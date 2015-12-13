@@ -43,7 +43,9 @@ function loadImg() {
 			//Hide the loading page
 			var loadtime = setTimeout(function(){
 				$('.loading').remove();
-				//gotoPin(0);
+				if(!$('.qrcode').length){
+					gotoPin(0);
+				}
 				//跑马灯效果
 				$('#marquee .list').marquee();
 				clearTimeout(loadtime);
