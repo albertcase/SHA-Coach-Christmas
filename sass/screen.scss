@@ -34,6 +34,69 @@ body{
   font:0.24rem/1.5 "SimSun",serif;
   color: #331f19;
 }
+
+//for loading
+.loading{
+  position: absolute;
+  z-index: 2;
+  background: #fff;
+  @include size(100%,100%);
+  top: 0;
+  text-align: center;
+  .inner{
+    @include size(4.4rem,3rem);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -1.5rem;
+    margin-left: -2.2rem;
+  }
+  .l-logo{
+    @include size(1.89rem,0.78rem);
+    margin: 0 auto;
+    //@include swing($duration:1s,$count:infinite);
+    @include transform(translate(-5px));
+    @include animation(lefttoright linear 2s infinite);
+
+  }
+  .icon-loading{
+    margin:0.2rem auto;
+    span{
+      display: inline-block;
+      @include size(0.1rem,0.1rem);
+      background: #848484;
+      margin-right: 0.1rem;
+      @include vendor-prefix(border-radius,100%);
+
+      &:nth-child(1){
+        @include animation(loading 1.5s infinite);
+      }
+      &:nth-child(2){
+        @include animation(loading 1.5s infinite 0.5s);
+      }
+      &:nth-child(3){
+        @include animation(loading 1.5s infinite 1s);
+      }
+    }
+  }
+}
+@include keyframes(loading){
+  0%{
+    background: #000;
+  }
+  66%{
+    background: #848484;
+  }
+}
+@include keyframes(lefttoright){
+  0%{
+    @include transform(translate(-5px));
+  }
+  50%{
+    @include transform(translate(5px));
+  }
+}
+
 .wrapper{
   background: #fcfcff;
   //background: #fcfcff url("../img/bg-2.png") no-repeat;
@@ -41,6 +104,7 @@ body{
   width: 100%;
   height: 100%;
   position: absolute;
+  z-index: 1;
 }
 //for wrap
 .wrap{
@@ -62,7 +126,8 @@ body{
 
 //for pin
 .pin {
-  display: none;
+  //display: none;
+  opacity: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -70,11 +135,11 @@ body{
   position: absolute;
   top: 0;
   text-align: center;
-  &.pin-1{
-    z-index: 100;
-  }
+  @include vendor-prefix(transition,opacity 0.8s);
   &.current{
-    display: block;
+    //display: block;
+    opacity: 1;
+    z-index: 100;
   }
   .inner{
     position: absolute;
@@ -88,20 +153,39 @@ body{
   position: relative;
   @include size(3.4rem,0.86rem);
   margin: 0.2rem auto 0rem;
-  background: url("../img/button.png") no-repeat;
+  background: url("../img/btn-sprite.png") no-repeat;
   background-size: 100%;
   font-size: 0.3rem;
   color: #24160f;
   text-align: center;
   line-height: 0.7rem;
-  &:after{
-    content: '';
-    display: block;
-    @include triangle-right(#473832,0.12rem,0.09rem);
-    position: absolute;
-    right: 0.3rem;
-    top: 32%;
+  //&:after{
+  //  content: '';
+  //  display: block;
+  //  @include triangle-right(#473832,0.12rem,0.09rem);
+  //  position: absolute;
+  //  right: 0.3rem;
+  //  top: 32%;
+  //}
+  &.p1-3{
+    left: 0.4rem;
+    background-position: 0% 19%;
   }
+  &.p3-5{
+    background-position: 0% 100%;
+  }
+  &.p4-5{
+    background-position: 0% 46%;
+    left: 0.3rem;
+  }
+  &.btn-submit{
+    background-position: 0% 72%;
+    left: 0.4rem;
+  }
+  &.gocoupon{
+    left: 0.3rem;
+  }
+
 }
 .line{
   @include size(4.21rem,0.15rem);
@@ -240,9 +324,10 @@ body{
   input[type='text'],
   input[type='number']{
     @include size(5rem,0.8rem);
-    background: #f9f9f9;
+    background: #fff;
     border:#c0bcbb 1px solid;
-
+    -webkit-appearance: none;
+    @include vendor-prefix(border-radius,0px);
     font-size: 0.32rem;
     color: #331f19;
     text-indent: 0.6rem;
@@ -253,19 +338,100 @@ body{
 //for pin-6
 .pin-6{
   .p6-1{
+    height: 6rem;
     font-size: 0.42rem;
+    img{
+      height: 100%;
+    }
   }
   .p6-2{
-    margin-top: 0.4rem;
+    margin-top: 0.2rem;
     font-size: 0.42rem;
   }
   .line{
     margin: 0.1rem auto 0.3rem;
   }
   .p6-3{
-    font-size: 0.22rem;
+    font-size: 0.3rem;
   }
 }
+
+//for pin-7
+.pin-7{
+  .inner{
+    margin: 3.5rem auto 0
+  }
+  .back{
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    &:before{
+      content: '';
+      display: block;
+      @include size(0.16rem,0.04rem);
+      background: #331f19;
+      position: absolute;
+      top: 0.2rem;
+      left: -0.2rem;
+      @include transform-origin(0% 50%);
+      @include transform(rotate(45deg));
+    }
+    &:after{
+      content: '';
+      display: block;
+      @include size(0.16rem,0.04rem);
+      background: #331f19;
+      position: absolute;
+      top: 0.2rem;
+      left: -0.2rem;
+      @include transform-origin(0% 50%);
+      @include transform(rotate(-45deg));
+    }
+  }
+  .title{
+    font-size: 0.5rem;
+  }
+  .content{
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 0.24rem;
+
+  }
+}
+
+//for share
+.share{
+  display: none;
+  position: absolute;
+  top: 0rem;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: rgba(255,255,255,0.9);
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,1)), to(rgba(255,255,255,0.7)));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0.7));
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0.7));
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0.7));
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0.7));
+  text-align: center;
+  img{
+    @include size(4.23rem,1.15rem);
+    margin: 1.8rem auto 0;
+  }
+}
+
 
 //test
 #__bs_notify__{

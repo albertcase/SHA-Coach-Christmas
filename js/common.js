@@ -1,13 +1,6 @@
 function gotoPin(i) {
 	var $pin = $('.wrap .pin');
 	$pin.removeClass('current').eq(i).addClass('current');
-	if(i==1){
-	//	shake page
-		$('.progress-bar').css('width','100%');
-		$('.progress-text span').html('10');
-		$('.shaking').css('opacity','0');
-		progress = 100;
-	}
 }
 
 function isWeiXin() {
@@ -18,14 +11,54 @@ function isWeiXin() {
 		return false;
 	}
 }
+function imgLoadDeferred($container) {
+	var deferred = $.Deferred();
+	var $img = $($container).find('img');
+	var count = 0;
+	deferred.notify(count, $img.length);
+	$img.on('load error', function(e) {
+		count++;
+		deferred.notify(count, $img.length);
+		if (count >= $img.length) {
+			deferred.resolve();
+		}
+	});
+	return deferred.promise();
+}
+
+function loadImg() {
+	$('.wrap img').each(function(i, elem) {
+		this.src0 = this.src;
+		this.src = '';
+	});
+	imgLoadDeferred($('.wrap')).done(function() {
+		$('.wrap img').each(function(i, elem) {
+			this.src = this.src0;
+		});
+		imgLoadDeferred($('.wrap')).progress(function(count, length) {
+			var progress = parseInt(count*100 / length)+'%';
+			//$('.loading').html(progress);
+		}).done(function() {
+
+			//Hide the loading page
+			var loadtime = setTimeout(function(){
+				$('.loading').remove();
+				gotoPin(6);
+				//跑马灯效果
+				$('#marquee .list').marquee();
+				clearTimeout(loadtime);
+			},1000);
+			$('.wrap img').each(function(i, elem) {
+				this.src = this.src0;
+			});
+		});
+	});
+}
 
 jQuery(document).ready(function($){
-
-	gotoPin(0);
-	//跑马灯效果
-	$('#marquee .list').marquee();
-
-
+	//preload all the images
+	loadImg();
+	//gotoPin(0);
 	//register shake
 	var testShake = new Shake({
 		threshold: 10, //default velocity threshold for shake to register
@@ -63,6 +96,14 @@ jQuery(document).ready(function($){
 			//go shake page
 			gotoPin(1);
 		}
+	});
+
+//	go first page
+	$('.back').on('click', function(){
+		gotoPin(0);
+	});
+	$('.p1-5').on('click', function(){
+		gotoPin(6);
 	});
 
 
