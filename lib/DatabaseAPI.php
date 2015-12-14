@@ -50,6 +50,35 @@ class DatabaseAPI {
 	}
 
 	/**
+	 * load prize record
+	 */
+	public function loadLotteryList(){
+		$sql="SELECT basename FROM  `coach_xmas_info` where id in (SELECT id FROM `coach_xmas_lottery` WHERE `lottery` =1)";
+		$res = $this->db->query($sql);
+		if ($res->num_rows<=0) {
+			return false;
+		}
+		$data = $res->fetch_array(MYSQLI_NUM);
+		return $data;
+		
+	}
+
+	/**
+	 * finish user info
+	 */
+	public function finishInfo($name, $mobile, $uid){
+		$sql="UPDATE `coach_xmas_info` SET `name` = ?, `mobile` = ? WHERE id = ?";
+		$res = $this->db->prepare($sql);
+		$res->bind_param("sss", $name, $mobile, $uid);
+		if($res->execute()) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+		
+	}
+
+	/**
 	 * Add prize record
 	 */
 	public function setPrizeRecord($uid, $lottery){

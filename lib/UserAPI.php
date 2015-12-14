@@ -8,11 +8,13 @@ class UserAPI {
 		$this->_db = new DatabaseAPI();
 	}
 
-	public function userLoad(){
-
+	public function userLoad($type = false){
 		if(isset($_SESSION['openid'])){
 			return $this->userLogin($_SESSION['openid']);
 		} else {
+			if ($type == true) {
+				return false;
+			}
 			$WechatAPI = new WechatAPI();
 			$WechatAPI->wechatAuthorize($_SERVER['REQUEST_URI']);
 		}
