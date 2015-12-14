@@ -102,7 +102,6 @@ body {
 }
 
 .preloading {
-  display: none;
   position: absolute;
   z-index: 2;
   background: #fff;
@@ -290,6 +289,9 @@ body {
 }
 .pin.pin-4 {
   background: #f1f2f2;
+}
+.pin.pin-6 {
+  background: #f9f8f9;
 }
 
 .buttons {
@@ -499,8 +501,8 @@ body {
 }
 
 .pin-5 .p4-txt {
-  margin-top: 0.8rem;
-  font-size: 0.28rem;
+  margin: 0.8rem auto 1.2rem;
+  font-size: 0.4rem;
 }
 .pin-5 .p4-txt strong {
   display: block;
@@ -515,7 +517,7 @@ body {
   width: 5rem;
   height: 0.8rem;
   background: #fff;
-  border: #c0bcbb 1px solid;
+  border: #000 1px solid;
   -webkit-appearance: none;
   border-radius: 0px;
   -ms-border-radius: 0px;
@@ -526,83 +528,37 @@ body {
   color: #331f19;
   text-indent: 0.6rem;
 }
+#form-contact .btn-submit {
+  margin-top: 1rem;
+}
 
 .pin-6 .p6-1 {
-  height: 6rem;
-  font-size: 0.42rem;
-}
-.pin-6 .p6-1 img {
-  height: 100%;
+  width: 6.15rem;
+  height: 4.82rem;
 }
 .pin-6 .p6-2 {
-  margin-top: 0.2rem;
-  font-size: 0.42rem;
-}
-.pin-6 .line {
-  margin: 0.1rem auto 0.3rem;
+  margin: 0.9rem auto;
+  font-size: 0.56rem;
 }
 .pin-6 .p6-3 {
   font-size: 0.3rem;
+}
+.pin-6 .gocoupon {
+  margin-top: 0.9rem;
 }
 
 .pin-7 .inner {
   margin: 3.5rem auto 0;
 }
-.pin-7 .back {
-  position: absolute;
-  top: -0.5rem;
-  left: 0.5rem;
-  height: 0.5rem;
-  line-height: 0.5rem;
-}
-.pin-7 .back:before {
-  content: '';
-  display: block;
-  width: 0.16rem;
-  height: 0.04rem;
-  background: #331f19;
-  position: absolute;
-  top: 0.2rem;
-  left: -0.2rem;
-  -webkit-transform-origin: 0% 50%;
-  -moz-transform-origin: 0% 50%;
-  -ms-transform-origin: 0% 50%;
-  -o-transform-origin: 0% 50%;
-  transform-origin: 0% 50%;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-.pin-7 .back:after {
-  content: '';
-  display: block;
-  width: 0.16rem;
-  height: 0.04rem;
-  background: #331f19;
-  position: absolute;
-  top: 0.2rem;
-  left: -0.2rem;
-  -webkit-transform-origin: 0% 50%;
-  -moz-transform-origin: 0% 50%;
-  -ms-transform-origin: 0% 50%;
-  -o-transform-origin: 0% 50%;
-  transform-origin: 0% 50%;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
 .pin-7 .title {
-  font-size: 0.5rem;
+  margin-top: 0.3rem;
+  font-size: 0.4rem;
 }
 .pin-7 .content {
   width: 80%;
-  margin: 0 auto;
   text-align: left;
   font-size: 0.24rem;
+  margin: 0.1rem auto 0.2rem;
 }
 
 .share {

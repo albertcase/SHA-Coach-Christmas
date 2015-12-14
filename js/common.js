@@ -59,9 +59,9 @@ function loadImg() {
 jQuery(document).ready(function($){
 	var enableShake = true;
 	//preload all the images
-	//loadImg();
-	gotoPin(3);
-	$('#marquee .list').marquee();
+	loadImg();
+	//gotoPin(0);
+	//$('#marquee .list').marquee();
 	//register shake
 	var pin2Shake = new Shake({
 		threshold: 10, //default velocity threshold for shake to register
@@ -151,6 +151,8 @@ jQuery(document).ready(function($){
 					alert('未登录');
 				}
 			});
+		}else if($(this).hasClass('p7-btn')){
+			gotoPin(0);
 		}
 	});
 
