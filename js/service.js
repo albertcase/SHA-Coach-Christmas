@@ -5,9 +5,12 @@ var service = function(){
     var ajaxPop = {
         show:function(tips){
             if(tips){
-                $('body').append('<div class="ajaxpop"><div class="loading">'+tips+'<span></span><span></span><span></span></div></div>');
+                //$('body').append('<div class="ajaxpop"><div class="loading">'+tips+'<span></span><span></span><span></span></div></div>');
+                $('body').append('<div class="ajaxpop"><div class="loading"><span class="icon-loading"></span>'+tips+'</div></div>');
+
+
             }else{
-                $('body').append('<div class="ajaxpop"><div class="loading">loading...</div></div>');
+                $('body').append('<div class="ajaxpop"><div class="loading"><span class="icon-loading"></span>loading...</div></div>');
             }
 
         },
@@ -45,6 +48,37 @@ var service = function(){
         })
     };
 
+    //0 未登录
+    //1 1/0
+    var isShake = function(callback){
+        ajaxPop.show();
+        $.ajax({
+            url:path+'/Request.php?model=status',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                ajaxPop.hide();
+                return callback(data);
+            }
+        })
+    };
+
+    //0 未登录
+    //1 提交成功
+    var addChance = function(callback){
+        ajaxPop.show();
+        $.ajax({
+            url:path+'/Request.php?model=share',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                ajaxPop.hide();
+                return callback(data);
+            }
+        })
+    };
+
+    ///Request.php?model=status
     var errorMsg = {
         add:function(ele,msg){
             if(!ele.find('.error').length){
@@ -95,6 +129,8 @@ var service = function(){
         path:path,
         isPrize:isPrize,
         formValidation:formValidation,
+        isShake:isShake,
+        addChance:addChance,
         formSubmit:formSubmit
         //fruitDrop:fruitDrop,
         //animate:animate

@@ -37,13 +37,14 @@ function loadImg() {
 		});
 		imgLoadDeferred($('.wrap')).progress(function(count, length) {
 			var progress = parseInt(count*100 / length)+'%';
-			//$('.loading').html(progress);
 		}).done(function() {
 
 			//Hide the loading page
 			var loadtime = setTimeout(function(){
-				$('.loading').remove();
-				//gotoPin(0);
+				$('.preloading').remove();
+				if(!$('.qrcode').length){
+					gotoPin(0);
+				}
 				//跑马灯效果
 				$('#marquee .list').marquee();
 				clearTimeout(loadtime);
@@ -56,20 +57,21 @@ function loadImg() {
 }
 
 jQuery(document).ready(function($){
+	var enableShake = true;
 	//preload all the images
 	loadImg();
 	//gotoPin(0);
 	//register shake
-	var testShake = new Shake({
+	var pin2Shake = new Shake({
 		threshold: 10, //default velocity threshold for shake to register
 		timeout: 1000 //default interval between events
 	});
-	testShake.start();
+	pin2Shake.start();
 	window.addEventListener('shake', shakeEventDidOccur, false);
 	function shakeEventDidOccur () {
 
 		//put your own code here etc.
-		if($('.pin-2').hasClass('current')){
+		if($('.pin-2').hasClass('current') && enableShake){
 			console.log('start api');
 			service.isPrize(function(data){
 				console.log(data);
@@ -100,9 +102,26 @@ jQuery(document).ready(function($){
 //	click buttons==>
 	$('.buttons').on('click', function(){
 		if($(this).hasClass('p1-3')){
-			console.log(1);
 			//go shake page
 			gotoPin(1);
+			service.isShake(function(data){
+				if(data.code){
+					if(data.msg){
+					//	has chance to shake
+					//	gotoPin(1);
+						enableShake = true;
+					}else{
+					//no shake chance,please share again
+						enableShake = false;
+						$('.share').addClass('show');
+					}
+				}else{
+					//未登录
+					enableShake = false;
+					alert('未登录');
+				}
+			});
+
 		}else if($(this).hasClass('gocoupon')){
 			addCard(1);
 		}else if($(this).hasClass('p3-5')){
@@ -122,7 +141,15 @@ jQuery(document).ready(function($){
 			}
 		}else if($(this).hasClass('p4-5')){
 			//go shake page
-			$('.share').addClass('show');
+			//$('.share').addClass('show');
+			service.addChance(function(data){
+				if(data.code){
+					alert('获得一次抽奖机会');
+					gotoPin(1);
+				}else{
+					alert('未登录');
+				}
+			});
 		}
 	});
 
@@ -161,6 +188,17 @@ jQuery(document).ready(function($){
 			}else{
 				//重新刷新
 				alert(data.msg);
+			}
+		});
+	});
+
+	$('.p2-t1').on('click',function(){
+		service.addChance(function(data){
+			alert(data.code);
+			if(data.code){
+				alert('获得一次抽奖机会');
+			}else{
+				alert('未登录');
 			}
 		});
 	});
