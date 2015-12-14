@@ -59,8 +59,9 @@ function loadImg() {
 jQuery(document).ready(function($){
 	var enableShake = true;
 	//preload all the images
-	loadImg();
-	//gotoPin(0);
+	//loadImg();
+	gotoPin(3);
+	$('#marquee .list').marquee();
 	//register shake
 	var pin2Shake = new Shake({
 		threshold: 10, //default velocity threshold for shake to register

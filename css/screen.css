@@ -98,10 +98,11 @@ img {
 
 body {
   font: 0.24rem/1.5 "SimSun",serif;
-  color: #331f19;
+  color: #000000;
 }
 
 .preloading {
+  display: none;
   position: absolute;
   z-index: 2;
   background: #fff;
@@ -230,7 +231,7 @@ body {
   }
 }
 .wrapper {
-  background: #fcfcff;
+  background: url("../img/v2/bg.jpg") no-repeat;
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -241,13 +242,13 @@ body {
 .wrap {
   z-index: 2;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  min-height: 12rem;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  background: url("../img/bg-1.png") no-repeat;
+  width: 6.16rem;
+  height: 10.10rem;
+  left: 50%;
+  top: 50%;
+  margin-left: -3.08rem;
+  margin-top: -5.05rem;
+  background: #fff;
   background-size: 100%;
 }
 
@@ -281,36 +282,29 @@ body {
   margin: 2.5rem auto 0;
   width: 100%;
 }
+.pin.pin-2 {
+  background: #f3f3f3;
+}
+.pin.pin-3 {
+  background: #edebee;
+}
+.pin.pin-4 {
+  background: #f1f2f2;
+}
 
 .buttons {
   position: relative;
-  width: 3.4rem;
+  width: 5rem;
   height: 0.86rem;
   margin: 0.2rem auto 0rem;
-  background: url("../img/btn-sprite.png") no-repeat;
-  background-size: 100%;
+  background: #000;
   font-size: 0.3rem;
-  color: #24160f;
+  color: #fff;
   text-align: center;
-  line-height: 0.7rem;
+  line-height: 0.86rem;
 }
 .buttons.p1-3 {
-  left: 0.4rem;
-  background-position: 0% 19%;
-}
-.buttons.p3-5 {
-  background-position: 0% 100%;
-}
-.buttons.p4-5 {
-  background-position: 0% 46%;
-  left: 0.3rem;
-}
-.buttons.btn-submit {
-  background-position: 0% 72%;
-  left: 0.4rem;
-}
-.buttons.gocoupon {
-  left: 0.3rem;
+  margin: 0.4rem auto;
 }
 
 .line {
@@ -319,35 +313,29 @@ body {
   margin: 0.3rem auto 0.45rem;
 }
 
-.animate-gif {
-  width: 7.5rem;
-  height: 6.64rem;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.pin-1 .p1-4 {
-  width: 5.8rem;
-  height: 7.25rem;
-  margin: 2.2rem auto 0rem;
-  background: url("../img/p1-1.png") no-repeat;
-  background-size: 100%;
+.pin-1 {
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.2;
+}
+.pin-1 .p1-1 {
+  width: 4.32rem;
+  height: 1.14rem;
+  margin: 0.6rem auto 0.5rem;
 }
 .pin-1 .title {
-  padding-top: 2.3rem;
-  font-weight: bold;
-  font-size: 0.34rem;
+  font-weight: normal;
+  font-size: 0.41rem;
 }
 .pin-1 .p1-des {
-  width: 2.7rem;
-  margin: 0.7rem auto 0rem;
+  font-size: 0.41rem;
+  margin: 0.2rem auto 0rem;
 }
 .pin-1 .small-font {
-  font-size: 0.22rem;
+  display: block;
+  margin: 0.2rem auto 0rem;
 }
 .pin-1 .marquee-wrap {
+  margin-top: 0.5rem;
   background: url("../img/mar2.png") no-repeat;
   background-size: 100%;
 }
@@ -368,78 +356,146 @@ body {
 }
 .pin-1 .p1-5 {
   position: relative;
-  font-size: 0.24rem;
-  text-align: center;
-  width: 1.2rem;
-  margin: 0 auto;
-}
-.pin-1 .p1-5:before {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  content: '';
-  display: inline-block;
-  width: 0.04rem;
-  height: 0.04rem;
-  background: #331f19;
-  border-radius: 100%;
-  -ms-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -o-border-radius: 100%;
-  -webkit-border-radius: 100%;
-}
-.pin-1 .p1-5:after {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  content: '';
-  display: inline-block;
-  width: 0.04rem;
-  height: 0.04rem;
-  background: #331f19;
-  border-radius: 100%;
-  -ms-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -o-border-radius: 100%;
-  -webkit-border-radius: 100%;
+  font-size: 0.28rem;
 }
 
 .pin-2 {
   text-align: center;
 }
-.pin-2 .p2-t1 {
-  margin-top: 0.4rem;
-  font-size: 0.48rem;
-  font-weight: bold;
+.pin-2 .p2-shake {
+  margin: 0.6rem auto 0.3rem;
+  width: 0.69rem;
+  height: 0.8rem;
+  -webkit-animation: tada 2s ease 0.2s infinite both;
+  -moz-animation: tada 2s ease 0.2s infinite both;
+  animation: tada 2s ease 0.2s infinite both;
+  -webkit-animation-backface-visibility: hidden;
+  -moz-animation-backface-visibility: hidden;
+  -ms-animation-backface-visibility: hidden;
+  -o-animation-backface-visibility: hidden;
+  animation-backface-visibility: hidden;
 }
-.pin-2 .p2-t1.tt {
-  font-size: 0.57rem;
+@-webkit-keyframes tada {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  10%, 20% {
+    -webkit-transform: scale(0.9) rotate(-3deg);
+  }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale(1.1) rotate(3deg);
+  }
+  40%, 60%, 80% {
+    -webkit-transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate(0);
+  }
+}
+@-moz-keyframes tada {
+  0% {
+    -moz-transform: scale(1);
+  }
+  10%, 20% {
+    -moz-transform: scale(0.9) rotate(-3deg);
+  }
+  30%, 50%, 70%, 90% {
+    -moz-transform: scale(1.1) rotate(3deg);
+  }
+  40%, 60%, 80% {
+    -moz-transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -moz-transform: scale(1) rotate(0);
+  }
+}
+@-o-keyframes tada {
+  0% {
+    -o-transform: scale(1);
+  }
+  10%, 20% {
+    -o-transform: scale(0.9) rotate(-3deg);
+  }
+  30%, 50%, 70%, 90% {
+    -o-transform: scale(1.1) rotate(3deg);
+  }
+  40%, 60%, 80% {
+    -o-transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -o-transform: scale(1) rotate(0);
+  }
+}
+@keyframes tada {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  10%, 20% {
+    -webkit-transform: scale(0.9) rotate(-3deg);
+    transform: scale(0.9) rotate(-3deg);
+  }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale(1.1) rotate(3deg);
+    transform: scale(1.1) rotate(3deg);
+  }
+  40%, 60%, 80% {
+    -webkit-transform: scale(1.1) rotate(-3deg);
+    transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate(0);
+    transform: scale(1) rotate(0);
+  }
+}
+.pin-2 .p2-1 {
+  margin: 0.4rem auto 0.4rem;
+  width: 6.14rem;
+  height: 5.57rem;
+}
+.pin-2 .p2-t1 {
+  font-size: 0.48rem;
 }
 .pin-2 .p2-2 {
   font-size: 0.6rem;
-  font-weight: bold;
-}
-.pin-2 .p2-3 {
-  font-size: 0.29rem;
 }
 
 .prize {
-  margin-top: 0.1rem;
-  font-size: 0.38rem;
+  margin-top: 0.5rem;
+  font-size: 0.36rem;
 }
 .prize .p3-t1 {
   display: block;
-  font-size: 0.59rem;
+  font-size: 0.56rem;
 }
 
 .pin-3 .prize-2 {
   display: none;
 }
+.pin-3 .gocoupon {
+  display: none;
+}
 .pin-3.getcoupon .prize-2 {
+  display: block;
+}
+.pin-3.getcoupon .gocoupon {
   display: block;
 }
 .pin-3.getcoupon .prize-1 {
   display: none;
+}
+.pin-3.getcoupon .p3-5 {
+  display: none;
+}
+.pin-3 .p3-1 {
+  position: relative;
+  width: 5.76rem;
+  height: 5.53rem;
+  margin: 0.5rem 0rem 0.2rem -0.05rem;
+}
+
+.pin-4 .p3-1 {
+  margin-top: 0.6rem;
 }
 
 .pin-5 .p4-txt {
