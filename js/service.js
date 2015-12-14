@@ -5,9 +5,12 @@ var service = function(){
     var ajaxPop = {
         show:function(tips){
             if(tips){
-                $('body').append('<div class="ajaxpop"><div class="loading">'+tips+'<span></span><span></span><span></span></div></div>');
+                //$('body').append('<div class="ajaxpop"><div class="loading">'+tips+'<span></span><span></span><span></span></div></div>');
+                $('body').append('<div class="ajaxpop"><div class="loading"><span class="icon-loading"></span>'+tips+'</div></div>');
+
+
             }else{
-                $('body').append('<div class="ajaxpop"><div class="loading">loading...</div></div>');
+                $('body').append('<div class="ajaxpop"><div class="loading"><span class="icon-loading"></span>loading...</div></div>');
             }
 
         },

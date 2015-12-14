@@ -104,6 +104,8 @@ jQuery(document).ready(function(){
                 service.addChance(function(data){
                     if(data.code){
                         alert('获得一次抽奖机会');
+                        gotoPin(1);
+                        $('.share').removeClass('show');
                     }else{
                         alert('未登录');
                     }

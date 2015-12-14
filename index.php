@@ -42,7 +42,7 @@ $lotteryList = $db->getAll($sql,true);
     <link rel="stylesheet" type="text/css" href="css/emoji.css" />
 </head>
 <body>
-<div class="loading">
+<div class="preloading">
     <div class="inner">
         <div class="l-logo">
             <img src="img/loading-logo.png" alt=""/>

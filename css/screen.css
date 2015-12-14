@@ -101,7 +101,7 @@ body {
   color: #331f19;
 }
 
-.loading {
+.preloading {
   position: absolute;
   z-index: 2;
   background: #fff;
@@ -110,7 +110,7 @@ body {
   top: 0;
   text-align: center;
 }
-.loading .inner {
+.preloading .inner {
   width: 4.4rem;
   height: 3rem;
   position: absolute;
@@ -119,7 +119,7 @@ body {
   margin-top: -1.5rem;
   margin-left: -2.2rem;
 }
-.loading .l-logo {
+.preloading .l-logo {
   width: 1.89rem;
   height: 0.78rem;
   margin: 0 auto;
@@ -132,10 +132,10 @@ body {
   -moz-animation: lefttoright linear 2s infinite;
   animation: lefttoright linear 2s infinite;
 }
-.loading .icon-loading {
+.preloading .icon-loading {
   margin: 0.2rem auto;
 }
-.loading .icon-loading span {
+.preloading .icon-loading span {
   display: inline-block;
   width: 0.1rem;
   height: 0.1rem;
@@ -147,17 +147,17 @@ body {
   -o-border-radius: 100%;
   -webkit-border-radius: 100%;
 }
-.loading .icon-loading span:nth-child(1) {
+.preloading .icon-loading span:nth-child(1) {
   -webkit-animation: loading 1.5s infinite;
   -moz-animation: loading 1.5s infinite;
   animation: loading 1.5s infinite;
 }
-.loading .icon-loading span:nth-child(2) {
+.preloading .icon-loading span:nth-child(2) {
   -webkit-animation: loading 1.5s infinite 0.5s;
   -moz-animation: loading 1.5s infinite 0.5s;
   animation: loading 1.5s infinite 0.5s;
 }
-.loading .icon-loading span:nth-child(3) {
+.preloading .icon-loading span:nth-child(3) {
   -webkit-animation: loading 1.5s infinite 1s;
   -moz-animation: loading 1.5s infinite 1s;
   animation: loading 1.5s infinite 1s;
@@ -575,6 +575,100 @@ body {
   margin: 1.8rem auto 0;
 }
 
+.ajaxpop {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-right: 5px;
+  background: rgba(0, 0, 0, 0.4);
+}
+.ajaxpop .loading {
+  position: absolute;
+  width: 2rem;
+  height: 1rem;
+  top: 50%;
+  left: 50%;
+  margin-left: -1.1rem;
+  margin-top: -0.6rem;
+  line-height: 1rem;
+  background: #7C7C7C;
+  padding: 0.2rem;
+  border-radius: 10px;
+  -ms-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  text-align: center;
+  color: #fff;
+}
+.ajaxpop .icon-loading {
+  display: inline-block;
+  position: relative;
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-right: 4px;
+  vertical-align: middle;
+  border-radius: 100%;
+  -ms-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -o-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+}
+.ajaxpop .icon-loading:after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  bottom: -3px;
+  left: -3px;
+  border-radius: 100%;
+  -ms-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -o-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border: 3px solid transparent;
+  border-top-color: #fff;
+  -webkit-animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    -o-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 #__bs_notify__ {
   display: none !important;
 }
