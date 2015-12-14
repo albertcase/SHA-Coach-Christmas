@@ -38,11 +38,12 @@ img{
 
 body{
   font:0.24rem/1.5 "SimSun",serif;
-  color: #331f19;
+  color: #000000;
 }
 
 //for loading
 .preloading{
+  //display: none;
   position: absolute;
   z-index: 2;
   background: #fff;
@@ -104,8 +105,7 @@ body{
 }
 
 .wrapper{
-  background: #fcfcff;
-  //background: #fcfcff url("../img/bg-2.png") no-repeat;
+  background: url("../img/v2/bg.jpg") no-repeat;
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -116,13 +116,14 @@ body{
 .wrap{
   z-index: 2;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  min-height: 12rem;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  background: url("../img/bg-1.png") no-repeat;
+  width: 6.16rem;
+  height: 10.10rem;
+  left: 50%;
+  top: 50%;
+  margin-left: -3.08rem;
+  margin-top: -5.05rem;
+  //overflow: hidden;
+  background: #fff;
   background-size: 100%;
 }
 .logo{
@@ -153,18 +154,29 @@ body{
     //margin: 125px auto 0;
     width: 100%;
   }
+  &.pin-2{
+    background: #f3f3f3;
+  }
+  &.pin-3{
+    background: #edebee;
+  }
+  &.pin-4{
+    background: #f1f2f2;
+  }
+  &.pin-6{
+    background: #f9f8f9;
+  }
 }
 
 .buttons{
   position: relative;
-  @include size(3.4rem,0.86rem);
+  @include size(5rem,0.86rem);
   margin: 0.2rem auto 0rem;
-  background: url("../img/btn-sprite.png") no-repeat;
-  background-size: 100%;
+  background: #000;
   font-size: 0.3rem;
-  color: #24160f;
+  color: #fff;
   text-align: center;
-  line-height: 0.7rem;
+  line-height: 0.86rem;
   //&:after{
   //  content: '';
   //  display: block;
@@ -174,58 +186,56 @@ body{
   //  top: 32%;
   //}
   &.p1-3{
-    left: 0.4rem;
-    background-position: 0% 19%;
+    margin: 0.4rem auto;
   }
-  &.p3-5{
-    background-position: 0% 100%;
-  }
-  &.p4-5{
-    background-position: 0% 46%;
-    left: 0.3rem;
-  }
-  &.btn-submit{
-    background-position: 0% 72%;
-    left: 0.4rem;
-  }
-  &.gocoupon{
-    left: 0.3rem;
-  }
+  //&.p3-5{
+  //  background-position: 0% 100%;
+  //}
+  //&.p4-5{
+  //  background-position: 0% 46%;
+  //  left: 0.3rem;
+  //}
+  //&.btn-submit{
+  //  background-position: 0% 72%;
+  //  left: 0.4rem;
+  //}
+  //&.gocoupon{
+  //  left: 0.3rem;
+  //}
 
 }
 .line{
   @include size(4.21rem,0.15rem);
   margin: 0.3rem auto 0.45rem;
 }
-.animate-gif{
-  @include size(7.5rem,6.64rem);
-  margin: 0 auto;
-  overflow: hidden;
-}
+//.animate-gif{
+//  @include size(7.5rem,6.64rem);
+//  margin: 0 auto;
+//  overflow: hidden;
+//}
 
 //for .pin-1
 .pin-1{
-  .p1-4{
-    @include size(5.8rem,7.25rem);
-    margin: 2.2rem auto 0rem;
-    background: url("../img/p1-1.png") no-repeat;
-    background-size: 100%;
-    text-align: center;
-    line-height: 1.5;
+  text-align: center;
+  line-height: 1.2;
+  .p1-1{
+    @include size(4.32rem,1.14rem);
+    margin: 0.6rem auto 0.5rem;
   }
   .title{
-    padding-top: 2.3rem;
-    font-weight: bold;
-    font-size: 0.34rem;
+    font-weight: normal;
+    font-size: 0.41rem;
   }
   .p1-des{
-    width: 2.7rem;
-    margin: 0.7rem auto 0rem;
+    font-size: 0.41rem;
+    margin: 0.2rem auto 0rem;
   }
   .small-font{
-    font-size: 0.22rem;
+    display: block;
+    margin: 0.2rem auto 0rem;
   }
   .marquee-wrap{
+    margin-top:0.5rem;
     background: url("../img/mar2.png") no-repeat;
     background-size: 100%;
   }
@@ -247,30 +257,7 @@ body{
   }
   .p1-5{
     position: relative;
-    font-size: 0.24rem;
-    text-align: center;
-    width: 1.2rem;
-    margin: 0 auto;
-    &:before{
-      position: absolute;
-      left: 0;
-      top: 50%;
-      content: '';
-      display: inline-block;
-      @include size(0.04rem,0.04rem);
-      background: #331f19;
-      @include vendor-prefix('border-radius',100%);
-    }
-    &:after{
-      position: absolute;
-      right: 0;
-      top: 50%;
-      content: '';
-      display: inline-block;
-      @include size(0.04rem,0.04rem);
-      background: #331f19;
-      @include vendor-prefix('border-radius',100%);
-    }
+    font-size: 0.28rem;
   }
 
 }
@@ -278,32 +265,29 @@ body{
 //for .pin-2
 .pin-2{
   text-align: center;
+  .p2-shake{
+    margin: 0.6rem auto 0.3rem;
+    @include size(0.69rem,0.8rem);
+    @include tada($duration:2s,$count:infinite);
+  }
   .p2-1{
-
+    margin: 0.4rem auto 0.4rem;
+    @include size(6.14rem,5.57rem);
   }
   .p2-t1{
-    margin-top: 0.4rem;
     font-size: 0.48rem;
-    font-weight: bold;
-    &.tt{
-      font-size: 0.57rem;
-    }
   }
   .p2-2{
     font-size: 0.6rem;
-    font-weight: bold;
-  }
-  .p2-3{
-    font-size: 0.29rem;
   }
 }
 
 .prize{
-  margin-top: 0.1rem;
-  font-size: 0.38rem;
+  margin-top: 0.5rem;
+  font-size: 0.36rem;
   .p3-t1{
     display: block;
-    font-size: 0.59rem;
+    font-size: 0.56rem;
   }
 }
 
@@ -312,22 +296,42 @@ body{
   .prize-2{
     display: none;
   }
+  .gocoupon{
+    display: none;
+  }
   &.getcoupon{
     .prize-2{
+      display: block;
+    }
+    .gocoupon{
       display: block;
     }
     .prize-1{
       display: none;
     }
+    .p3-5{
+      display: none;
+
+    }
+  }
+  .p3-1{
+    position: relative;
+    @include size(5.76rem,5.53rem);
+    margin:0.5rem 0rem 0.2rem -0.05rem;
   }
 }
 
 //for pin-4
+.pin-4{
+  .p3-1{
+    margin-top: 0.6rem;
+  }
+}
 //for pin-5
 .pin-5{
   .p4-txt{
-    margin-top: 0.8rem;
-    font-size: 0.28rem;
+    margin: 0.8rem auto 1.2rem;
+    font-size: 0.4rem;
     strong{
       display: block;
     }
@@ -342,12 +346,15 @@ body{
   input[type='number']{
     @include size(5rem,0.8rem);
     background: #fff;
-    border:#c0bcbb 1px solid;
+    border:#000 1px solid;
     -webkit-appearance: none;
     @include vendor-prefix(border-radius,0px);
     font-size: 0.32rem;
     color: #331f19;
     text-indent: 0.6rem;
+  }
+  .btn-submit{
+    margin-top: 1rem;
   }
 }
 
@@ -355,21 +362,17 @@ body{
 //for pin-6
 .pin-6{
   .p6-1{
-    height: 6rem;
-    font-size: 0.42rem;
-    img{
-      height: 100%;
-    }
+    @include size(6.15rem,4.82rem);
   }
   .p6-2{
-    margin-top: 0.2rem;
-    font-size: 0.42rem;
-  }
-  .line{
-    margin: 0.1rem auto 0.3rem;
+    margin: 0.9rem auto;
+    font-size: 0.56rem;
   }
   .p6-3{
     font-size: 0.3rem;
+  }
+  .gocoupon{
+    margin-top: 0.9rem;
   }
 }
 
@@ -378,44 +381,15 @@ body{
   .inner{
     margin: 3.5rem auto 0
   }
-  .back{
-    position: absolute;
-    top: -0.5rem;
-    left: 0.5rem;
-    height: 0.5rem;
-    line-height: 0.5rem;
-    &:before{
-      content: '';
-      display: block;
-      @include size(0.16rem,0.04rem);
-      background: #331f19;
-      position: absolute;
-      top: 0.2rem;
-      left: -0.2rem;
-      @include transform-origin(0% 50%);
-      @include transform(rotate(45deg));
-    }
-    &:after{
-      content: '';
-      display: block;
-      @include size(0.16rem,0.04rem);
-      background: #331f19;
-      position: absolute;
-      top: 0.2rem;
-      left: -0.2rem;
-      @include transform-origin(0% 50%);
-      @include transform(rotate(-45deg));
-    }
-  }
   .title{
-    font-size: 0.5rem;
+    margin-top: 0.3rem;
+    font-size: 0.4rem;
   }
   .content{
     width: 80%;
-    margin: 0 auto;
     text-align: left;
     font-size: 0.24rem;
-
+    margin: 0.1rem auto 0.2rem;
   }
 }
 
