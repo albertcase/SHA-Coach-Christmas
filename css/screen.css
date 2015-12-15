@@ -300,7 +300,7 @@ body {
   height: 0.86rem;
   margin: 0.2rem auto 0rem;
   background: #000;
-  font-size: 0.3rem;
+  font-size: 0.36rem;
   color: #fff;
   text-align: center;
   line-height: 0.86rem;
@@ -477,8 +477,21 @@ body {
 .pin-3 .gocoupon {
   display: none;
 }
+.pin-3.getcoupon {
+  background: #fff;
+}
 .pin-3.getcoupon .prize-2 {
   display: block;
+}
+.pin-3.getcoupon .prize-2 .p3-1 {
+  text-align: right;
+  width: 6.16rem;
+  height: 5.24rem;
+  margin: 0.2rem auto 0.6rem;
+}
+.pin-3.getcoupon .prize-2 .p3-1 img {
+  width: 6.14rem;
+  height: 5.24rem;
 }
 .pin-3.getcoupon .gocoupon {
   display: block;
