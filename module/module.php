@@ -7,10 +7,8 @@ function _wechat_getdata() {
 
 function _wechat_callback() {
 	$openid = $_GET['openid'];
-	$wechatAPI = new WechatAPI();
-	$userinfo = $wechatAPI->getUserInfo($openid);
 	$user = new UserAPI();
-	$user->userLogin($userinfo['data']['openid']);
+	$user->userLogin($openid);
 	header("Location:/");
 	exit;
 }
