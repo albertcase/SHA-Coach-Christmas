@@ -21,6 +21,7 @@ function _access_listener() {
 		$re = $wechatAPI->isUserSubscribed($user->openid);
 		if (!$re) {
 			print file_get_contents(TEMPLATE_ROOT . 'qrcode.html');
+			print '<script>var CANSHAKE="'.$user->status.'";<script>';
 			exit;
 		}
 		print file_get_contents(TEMPLATE_ROOT . 'home.html');
