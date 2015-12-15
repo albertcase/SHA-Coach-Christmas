@@ -1,3 +1,6 @@
+//just for test
+//var CANSHAKE = 0;
+
 function addCard(i) {
 	wx.addCard({
 		cardList: [{
@@ -99,6 +102,7 @@ jQuery(document).ready(function($){
 
 		//put your own code here etc.
 		if($('.pin-2').hasClass('current') && enableShake){
+			CANSHAKE--;
 			console.log('start api');
 			service.isPrize(function(data){
 				console.log(data);
@@ -131,24 +135,12 @@ jQuery(document).ready(function($){
 		if($(this).hasClass('p1-3')){
 			//go shake page
 			gotoPin(1);
-			service.isShake(function(data){
-				if(data.code){
-					if(data.msg){
-					//	has chance to shake
-					//	gotoPin(1);
-						enableShake = true;
-					}else{
-					//no shake chance,please share again
-						enableShake = false;
-						$('.share').addClass('show');
-					}
-				}else{
-					//未登录
-					enableShake = false;
-					alert('未登录');
-				}
-			});
-
+			if(CANSHAKE){
+				enableShake = true;
+			}else{
+				enableShake = false;
+				$('.share').addClass('show');
+			}
 		}else if($(this).hasClass('gocoupon')){
 			addCard(1);
 		}else if($(this).hasClass('p3-5')){
@@ -195,42 +187,42 @@ jQuery(document).ready(function($){
 
 
 //test
-	$('.p2-3').on('click',function(){
-		service.isPrize(function(data){
-			console.log(data);
-			//code msg
-			//0 未登录
-			//1 礼券
-			//2 卡包
-			//3 未中奖
-			if(data.code==1){
-				//1 礼券
-				gotoPin(2);
-				$('.pin-3').addClass('getcoupon');
-			}else if(data.code==2){
-				//2 卡包
-				gotoPin(2);
-				$('.pin-3').removeClass('getcoupon');
-			}else if(data.code==3){
-				//3 未中奖
-				gotoPin(3);
-			}else{
-				//重新刷新
-				alert(data.msg);
-			}
-		});
-	});
-
-	$('.p2-t1').on('click',function(){
-		service.addChance(function(data){
-			alert(data.code);
-			if(data.code){
-				alert('获得一次抽奖机会');
-			}else{
-				alert('未登录');
-			}
-		});
-	});
+//	$('.p2-3').on('click',function(){
+//		service.isPrize(function(data){
+//			console.log(data);
+//			//code msg
+//			//0 未登录
+//			//1 礼券
+//			//2 卡包
+//			//3 未中奖
+//			if(data.code==1){
+//				//1 礼券
+//				gotoPin(2);
+//				$('.pin-3').addClass('getcoupon');
+//			}else if(data.code==2){
+//				//2 卡包
+//				gotoPin(2);
+//				$('.pin-3').removeClass('getcoupon');
+//			}else if(data.code==3){
+//				//3 未中奖
+//				gotoPin(3);
+//			}else{
+//				//重新刷新
+//				alert(data.msg);
+//			}
+//		});
+//	});
+//
+//	$('.p2-t1').on('click',function(){
+//		service.addChance(function(data){
+//			alert(data.code);
+//			if(data.code){
+//				alert('获得一次抽奖机会');
+//			}else{
+//				alert('未登录');
+//			}
+//		});
+//	});
 
 
 

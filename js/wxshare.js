@@ -16,20 +16,20 @@ jQuery(document).ready(function(){
             dataUrl: '',
             success: function () {
                 console.log('share success to friend');
-                service.addChance(function(data){
-                    if(data.code){
-                        alert('获得一次抽奖机会');
-                    }else{
-                        alert('未登录');
-                    }
-                });
+                CANSHAKE++;
+                //service.addChance(function(data){
+                //    if(data.code){
+                //        alert('获得一次抽奖机会');
+                //    }else{
+                //        alert('未登录');
+                //    }
+                //});
 
             },
             cancel: function () {
 
             }
         });
-
 
 
         window.wechat_setting.timeline = {
