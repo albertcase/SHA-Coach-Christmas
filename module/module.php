@@ -25,26 +25,7 @@ function _access_listener() {
 		}
 		print file_get_contents(TEMPLATE_ROOT . 'home.html');
 		print '<script>var CANSHAKE="'.$user->status.'";<script>';
-		$access_token = '08ecb2077e158fd621a1f175e22442e8';
-		$api_url = 'http://api.curio.im/v2/wx/card/js/add/json?access_token='. $access_token;
-		// 参数数组
-		$data[] = array(
-		        'card_id' => 'pKCDxjlrh6tQ8sEDiZl9eAmKcXqA',
-		        'code' => '',
-		        'openid' => ''
-		);
-		 
-		$ch = curl_init ();
-		// print_r($ch);
-		curl_setopt ( $ch, CURLOPT_URL, $api_url );
-		curl_setopt ( $ch, CURLOPT_POST, 1 );
-		curl_setopt ( $ch, CURLOPT_HEADER, 0 );
-		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
-		curl_setopt ( $ch, CURLOPT_POSTFIELDS, json_encode($data) );
-		$return = curl_exec ( $ch );
-		curl_close ( $ch );
-		$return = json_decode($return,true);
-		$cardList = $return['data']['cardList'];
+		$cardList = $wechatAPI->cardList();
 		print '<script>var cardListJSON = '.json_encode($cardList).'</script>';
 		exit;
 	}
