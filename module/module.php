@@ -82,6 +82,7 @@ function _api_lottery() {
 			print json_encode(array("code"=>4,"msg"=>"没有抽奖机会"));
 		    exit;
 		}
+		$_SESSION['user']->status = 0;
 		if ($user->lottery > 0) {
 			//只能中卡券
 			print json_encode(array("code"=>2,"msg"=>"卡券"));
