@@ -101,7 +101,9 @@ class DatabaseAPI {
 		$res->execute();
 		$_SESSION['user']->lottery = $lottery;
 		$RedisAPI = new RedisAPI();
-		
+		$name = json_decode($name, true);
+		$nickname = emoji_unified_to_html($name);
+		$RedisAPI->setLotteryList($name);
 	}
 
 	/**
