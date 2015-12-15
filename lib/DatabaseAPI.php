@@ -89,7 +89,7 @@ class DatabaseAPI {
 	/**
 	 * Add prize record
 	 */
-	public function setPrizeRecord($uid, $lottery){
+	public function setPrizeRecord($uid, $lottery, $name){
 		$nowtime = date("Y-m-d H:i:s");
 		$sql = "INSERT INTO `coach_xmas_lottery` SET `uid` = ?, `lottery` = ?, `createtime` = ?";
 		$res = $this->db->prepare($sql); 
@@ -100,6 +100,8 @@ class DatabaseAPI {
 		$res->bind_param("ss", $lottery, $uid);
 		$res->execute();
 		$_SESSION['user']->lottery = $lottery;
+		$RedisAPI = new RedisAPI();
+		
 	}
 
 	/**

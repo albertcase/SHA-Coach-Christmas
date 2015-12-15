@@ -92,12 +92,12 @@ function _api_lottery() {
 		$rand = rand(1, 10000);
 		if ($rand <= 5000) {
 			//包包
-			$DatabaseAPI->setPrizeRecord($user->uid, 1);
+			$DatabaseAPI->setPrizeRecord($user->uid, 1, $user->basename);
 			print json_encode(array("code"=>1,"msg"=>"礼品"));
 		    exit;
 		}
 		//未中奖
-		$DatabaseAPI->setPrizeRecord($user->uid, 2);
+		$DatabaseAPI->setPrizeRecord($user->uid, 2, $user->basename);
 		print json_encode(array("code"=>3,"msg"=>"未中奖"));
 	    exit;
 	}
