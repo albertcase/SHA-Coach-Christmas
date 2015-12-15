@@ -18,32 +18,40 @@ class DatabaseAPI {
 	 * Create user in database
 	 */
 	public function insertUser($openid){
-		$info = file_get_contents("http://api.curio.im/v2/wx/users/" . $openid . "?access_token=" . CURIO_TOKEN);
-		$info = json_decode($info, true);
+		$WechatAPI = new WechatAPI();
+		$info = $WechatAPI->getUserInfo($openid);
 		$basename = json_encode(array('name' => $info['data']['nickname']));
-		$sql = "INSERT INTO `coach_xmas_info` SET `openid` = ?, nickname = ?, basename = ?, headimgurl = ?, status = 1";
+		$sql = "INSERT INTO `coach_xmas_info` SET `openid` = ?, nickname = ?, basename = ?, headimgurl = ?, lottery = 0";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("ssss", $openid, $info['data']['nickname'], $basename, $info['data']['headimgurl']);
-		if($res->execute()) 
+		if ($res->execute()) {
 			return $this->findUserByOpenid($openid);
-		else 
+		} else {
 			return FALSE;
+		}
 	}
 
 	/**
 	 * Create user in database
 	 */
 	public function findUserByOpenid($openid){
-		$sql = "SELECT id,openid,status  FROM `coach_xmas_info` WHERE `openid` = ?"; 
+		if (isset($_SESSION['user'])) {
+			return $_SESSION['user'];
+		}
+		$sql = "SELECT id,openid,basename,lottery  FROM `coach_xmas_info` WHERE `openid` = ?"; 
 		$res = $this->db->prepare($sql);
 		$res->bind_param("s", $openid);
 		$res->execute();
-		$res->bind_result($uid, $openid, $status);
+		$res->bind_result($uid, $openid, $basename, $lottery);
 		if($res->fetch()) {
 			$user = new stdClass();
 			$user->uid = $uid;
 			$user->openid = $openid;
-			$user->status = $status;
+			$user->basename = $basename;
+			$user->lottery = $lottery;
+			$user->status = 1;
+
+			$_SESSION['user'] = $user;
 			return $user;
 		}
 		return NULL;
@@ -82,14 +90,32 @@ class DatabaseAPI {
 	 * Add prize record
 	 */
 	public function setPrizeRecord($uid, $lottery){
-		$nowtime = NOWTIME;
-		$sql = "INSERT INTO `coach_xmas_lottery` SET `uid` = ?, `lottery` = ?, `created` = ?";
+		$nowtime = date("Y-m-d H:i:s");
+		$sql = "INSERT INTO `coach_xmas_lottery` SET `uid` = ?, `lottery` = ?, `createtime` = ?";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("sss", $uid, $lottery, $nowtime);
-		if($res->execute()) {
-			return TRUE;
-		} else {
-			return FALSE;
-		}
+		$res->execute();
+		$sql = "UPDATE `coach_xmas_info` SET `lottery` = ? WHERE id = ?";
+		$res = $this->db->prepare($sql); 
+		$res->bind_param("ss", $lottery, $uid);
+		$res->execute();
+		$_SESSION['user']->lottery = $lottery;
 	}
+
+	/**
+	 * check prize record
+	 */
+	public function checkLottery($uid){
+		$sql = "SELECT count(*) FROM `coach_xmas_lottery` WHERE `uid` = ?"; 
+		$res = $this->db->prepare($sql);
+		$res->bind_param("s", $uid);
+		$res->execute();
+		$res->bind_result($num);
+		if($res->fetch()) {
+			return $num;
+		}
+		return 0;
+	}
+
+
 }
