@@ -17,5 +17,8 @@
     "url": "https://evelyn_zhang@bitbucket.org/nuruncode/sha_csr_underage_mobile.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-concat": "2.6.0"
+  }
 }
