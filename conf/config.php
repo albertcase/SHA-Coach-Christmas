@@ -2,7 +2,6 @@
 
 define("TEST", TRUE); //test enviroment setting
 define("TEMPLATE_ROOT", dirname(__FILE__) . '/../template/');
-//define("TEMPLATE_ROOT", dirname(__FILE__) . '/../template');
 
 //Database config info
 define("DBHOST", '127.0.0.1');
