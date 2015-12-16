@@ -14,17 +14,24 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('concatscript', function() {
-    return gulp.src(['js/jquery.min.js','js/rem.js','js/jweixin.js','js/marquee.js','js/service.js','js/wxshare.js','js/shake.js', 'js/common.js'])
+gulp.task('concatjqueryrem', function() {
+    return gulp.src(['js/jquery.min.js','js/rem.js'])
+        .pipe(concat('jrem.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('concatscriptall', function() {
+    return gulp.src(['js/marquee.js','js/service.js','js/wxshare.js','js/shake.js', 'js/common.js'])
         .pipe(concat('all.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
 
-
 gulp.task('css', function () {
     // 1. 找到文件
     gulp.src('css/*.css')
+        .pipe(concat('style.css'))
         // 2. 压缩文件
         .pipe(minify())
         // 3. 另存为压缩文件
@@ -34,4 +41,4 @@ gulp.task('css', function () {
 // Default
 //gulp.task('default', ['browser-sync']);
 
-gulp.task('uf', ['concatscript','css']);
+gulp.task('uf', ['concatjqueryrem','concatscriptall','css']);
