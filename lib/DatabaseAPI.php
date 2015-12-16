@@ -105,7 +105,7 @@ class DatabaseAPI {
 	 * finish user info
 	 */
 	public function finishInfo($name, $mobile, $uid){
-		$sql="UPDATE `coach_xmas_info` SET `name` = ?, `mobile` = ? WHERE id = ?";
+		$sql="INSERT INTO `coach_xmas_list` SET `name` = ?, `mobile` = ?, uid = ?";
 		$res = $this->db->prepare($sql);
 		$res->bind_param("sss", $name, $mobile, $uid);
 		if($res->execute()) {
