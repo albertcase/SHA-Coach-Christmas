@@ -573,6 +573,10 @@ body {
   font-size: 0.24rem;
   margin: 0.1rem auto 0.2rem;
 }
+.pin-7 .content-wrap {
+  overflow: auto;
+  height: 7.6rem;
+}
 
 .share {
   display: none;
