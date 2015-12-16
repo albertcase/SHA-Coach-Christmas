@@ -66,13 +66,13 @@ var service = function(){
     //0 未登录
     //1 提交成功
     var addChance = function(callback){
-        ajaxPop.show();
+        //ajaxPop.show();
         $.ajax({
             url:path+'/api/share',
             type:'POST',
             dataType:'json',
             success:function(data){
-                ajaxPop.hide();
+                //ajaxPop.hide();
                 return callback(data);
             }
         })

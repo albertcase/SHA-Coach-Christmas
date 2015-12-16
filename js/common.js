@@ -114,11 +114,11 @@ jQuery(document).ready(function($){
 				if(data.code==1){
 					//1 礼券
 					gotoPin(2);
-					$('.pin-3').addClass('getcoupon');
+					$('.pin-3').removeClass('getcoupon');
 				}else if(data.code==2){
 					//2 卡包
 					gotoPin(2);
-					$('.pin-3').removeClass('getcoupon');
+					$('.pin-3').addClass('getcoupon');
 				}else if(data.code==3){
 					//3 未中奖
 					gotoPin(3);
