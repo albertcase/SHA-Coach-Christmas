@@ -120,10 +120,9 @@ class DatabaseAPI {
 	 * Add prize record
 	 */
 	public function setPrizeRecord($uid, $lottery) {
-		$nowtime = date("Y-m-d H:i:s");
-		$sql = "INSERT INTO `coach_xmas_lottery` SET `uid` = ?, `lottery` = ?, `createtime` = ?";
+		$sql = "INSERT INTO `coach_xmas_lottery` SET `uid` = ?, `lottery` = ?";
 		$res = $this->db->prepare($sql); 
-		$res->bind_param("sss", $uid, $lottery, $nowtime);
+		$res->bind_param("ss", $uid, $lottery);
 		$res->execute();
 		$sql = "UPDATE `coach_xmas_info` SET `lottery` = ? WHERE id = ?";
 		$res = $this->db->prepare($sql); 
