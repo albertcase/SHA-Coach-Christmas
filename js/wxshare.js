@@ -67,7 +67,7 @@ jQuery(document).ready(function(){
     }
 
     weixinshare({
-        title1: '摇一摇，遇见COACH圣诞好礼',
+        title1: '50份COACH圣诞福袋摇回家',
         des: '感谢您一年的支持，点击即可遇见COACH圣诞好礼！',
         link: window.location.href,
         img: window.location.origin+'/img/share.jpg'
