@@ -6,8 +6,8 @@ define("TEMPLATE_ROOT", dirname(__FILE__) . '/../template/');
 //Database config info
 define("DBHOST", '127.0.0.1');
 define("DBUSER", 'root');
-define("DBPASS", '1qazxsw2');
-define("DBNAME", 'coach_xmas');
+define("DBPASS", '');
+define("DBNAME", 'coach_christmas');
 
 //Curio Wechat info
 define("CURIO_WXID", '3736f002c80bf8bfe5aa9ad41c87c984');

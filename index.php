@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors", 1);
 Session_Start();
 require_once dirname(__FILE__) . "/conf/config.php";
 require_once dirname(__FILE__) . "/module/module.php";

@@ -70,7 +70,7 @@ class DatabaseAPI {
 		if (isset($_SESSION['user'])) {
 			return $_SESSION['user'];
 		}
-		$sql = "SELECT id,openid,lottery  FROM `coach_xmas_info` WHERE `openid` = ?"; 
+		$sql = "SELECT id, openid, lottery FROM `coach_xmas_info` WHERE `openid` = ?"; 
 		$res = $this->db->prepare($sql);
 		$res->bind_param("s", $openid);
 		$res->execute();
