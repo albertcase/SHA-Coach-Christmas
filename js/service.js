@@ -66,17 +66,35 @@ var service = function(){
     //0 未登录
     //1 提交成功
     var addChance = function(callback){
-        ajaxPop.show();
+        //ajaxPop.show();
         $.ajax({
             url:path+'/api/share',
             type:'POST',
             dataType:'json',
             success:function(data){
-                ajaxPop.hide();
+                //ajaxPop.hide();
                 return callback(data);
             }
         })
     };
+
+    //1 中奖名单
+    //code msg
+    //0 未登录
+    //1 array['a','b','c']
+    var marqueeList = function(callback){
+        //ajaxPop.show();
+        $.ajax({
+            url:path+'/api/lotterylist',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                //ajaxPop.hide();
+                return callback(data);
+            }
+        })
+    };
+
 
     ///Request.php?model=status
     var errorMsg = {
@@ -131,7 +149,8 @@ var service = function(){
         formValidation:formValidation,
         isShake:isShake,
         addChance:addChance,
-        formSubmit:formSubmit
+        formSubmit:formSubmit,
+        marqueeList:marqueeList
         //fruitDrop:fruitDrop,
         //animate:animate
     }

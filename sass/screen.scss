@@ -31,7 +31,7 @@ img{
 }
 .qrcode{
   @include size(4.51rem,6.46rem);
-  margin: 2rem auto 0;
+  margin: 1.6rem auto 0;
   position: relative;
   z-index: 100;
 }
@@ -320,7 +320,6 @@ body{
     }
     .p3-5{
       display: none;
-
     }
   }
   .p3-1{
