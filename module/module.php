@@ -24,7 +24,7 @@ function _access_listener() {
 			exit;
 		}
 		print file_get_contents(TEMPLATE_ROOT . 'home.html');
-		print '<script>var CANSHAKE="'.$user->status.'";<script>';
+		print '<script>var CANSHAKE="'.$user->status.'";</script>';
 		$cardList = $wechatAPI->cardList();
 		print '<script>var cardListJSON = '.json_encode($cardList).'</script>';
 		exit;
