@@ -140,23 +140,8 @@ class DatabaseAPI {
 	/**
 	 * check prize record
 	 */
-	public function checkLottery($uid){
-		$sql = "SELECT lottery FROM `coach_xmas_info` WHERE `id` = ?"; 
-		$res = $this->db->prepare($sql);
-		$res->bind_param("s", $uid);
-		$res->execute();
-		$res->bind_result($num);
-		if($res->fetch()) {
-			return $num;
-		}
-		return 0;
-	}
-
-	/**
-	 * check prize record
-	 */
 	public function totalcount(){
-		$sql = "SELECT count(*) FROM `coach_xmas_info` WHERE `pid` = 1"; 
+		$sql = "SELECT count(*) FROM `coach_xmas_info` WHERE `lottery` = 1"; 
 		$res = $this->db->prepare($sql);
 		$res->execute();
 		$res->bind_result($num);
