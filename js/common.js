@@ -36,19 +36,19 @@ jQuery(document).ready(function($){
 
 	//preload page0
 	var imagesArray = [
-		'/img/bg.jpg',
+		'/img/v2/bg.jpg',
 		'/img/loading-logo.png',
 		'/img/logo.png',
 		'/img/mar2.png',
 		'/img/qrcode.png',
 		'/img/share-3.png',
-		'/img/dog-1.jpg',
-		'/img/dog-2-2.png',
-		'/img/dog-2.png',
-		'/img/dog-3.png',
-		'/img/dog-4.png',
-		'/img/icon-sp.png',
-		'/img/p1-1.png',
+		'/img/v2/dog-1.jpg',
+		'/img/v2/dog-2-2.png',
+		'/img/v2/dog-2.png',
+		'/img/v2/dog-3.png',
+		'/img/v2/dog-4.png',
+		'/img/v2/icon-sp.png',
+		'/img/v2/p1-1.png',
 		'/img/share.jpg'
 	];
 	new preLoader(imagesArray, {
