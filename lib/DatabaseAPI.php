@@ -105,6 +105,8 @@ class DatabaseAPI {
 	 * finish user info
 	 */
 	public function finishInfo($name, $mobile, $uid){
+		header("Content-type: text/html; charset=utf-8");
+		echo $name;exit;
 		$sql="INSERT INTO `coach_xmas_list` SET `name` = ?, `mobile` = ?, uid = ?";
 		$res = $this->db->prepare($sql);
 		$res->bind_param("sss", $name, $mobile, $uid);
