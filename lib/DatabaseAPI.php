@@ -34,7 +34,7 @@ class DatabaseAPI {
 	}
 
 	public function regUser($openid, $nickname, $headimgurl) {
-		if ($this->findUserByOpenid($openid)) {
+		if ($this->findUserByOauth($openid)) {
 			return TRUE;
 		}
 		$sql = "INSERT INTO `coach_xmas_oauth` SET `openid` = ?, nickname = ?, basename = ?, headimgurl = ?";
@@ -46,6 +46,21 @@ class DatabaseAPI {
 		} else {
 			return FALSE;
 		}
+	}
+
+	/**
+	 * Create user in database
+	 */
+	public function findUserByOauth($openid){
+		$sql = "SELECT id  FROM `coach_xmas_oauth` WHERE `openid` = ?"; 
+		$res = $this->db->prepare($sql);
+		$res->bind_param("s", $openid);
+		$res->execute();
+		$res->bind_result($uid);
+		if($res->fetch()) {
+			return TRUE;
+		}
+		return FALSE;
 	}
 
 	/**
