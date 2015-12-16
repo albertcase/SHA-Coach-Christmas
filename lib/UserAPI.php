@@ -10,7 +10,7 @@ class UserAPI {
 
 	public function userLoad($type = false){
 		if(isset($_SESSION['user'])){
-			return $this->userLogin($_SESSION['user']->openid);
+			return $_SESSION['user'];
 		} else {
 			if ($type == true) {
 				return false;
