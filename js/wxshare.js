@@ -18,14 +18,14 @@ jQuery(document).ready(function(){
                 success: function () {
                     console.log('share success to friend');
                     CANSHAKE++;
-                    $('share').removeClass('show');
-                    //service.addChance(function(data){
-                    //    if(data.code){
-                    //        alert('获得一次抽奖机会');
-                    //    }else{
-                    //        alert('未登录');
-                    //    }
-                    //});
+                    $('.share').removeClass('show');
+                    service.addChance(function(data){
+                        if(data.code){
+                            alert('获得一次抽奖机会');
+                        }else{
+                            alert('未登录');
+                        }
+                    });
 
                 },
                 cancel: function () {
@@ -45,11 +45,11 @@ jQuery(document).ready(function(){
                 imgUrl: obj.img,
                 success: function () {
                     console.log('share success to timeline');
+                    CANSHAKE++;
+                    $('.share').removeClass('show');
                     service.addChance(function(data){
                         if(data.code){
                             alert('获得一次抽奖机会');
-                            gotoPin(1);
-                            $('.share').removeClass('show');
                         }else{
                             alert('未登录');
                         }
