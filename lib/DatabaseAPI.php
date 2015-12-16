@@ -120,17 +120,13 @@ class DatabaseAPI {
 	 * Add prize record
 	 */
 	public function setPrizeRecord($uid, $lottery) {
-		$sql = "INSERT INTO `coach_xmas_lottery` SET `uid` = ?, `lottery` = ?";
-		$res = $this->db->prepare($sql); 
-		$res->bind_param("ss", $uid, $lottery);
-		$res->execute();
 		$sql = "UPDATE `coach_xmas_info` SET `lottery` = ? WHERE id = ?";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("ss", $lottery, $uid);
 		$res->execute();
 		$_SESSION['user']->lottery = $lottery;
 		if ($lottery == 1) {
-			$sql = "SELECT nickname FROM `coach_xmas_lottery` WHERE `openid` = ?"; 
+			$sql = "SELECT nickname FROM `coach_xmas_oauth` WHERE `openid` = ?"; 
 			$res = $this->db->prepare($sql);
 			$res->bind_param("s", $_SESSION['user']->openid);
 			$res->execute();
