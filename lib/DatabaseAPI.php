@@ -115,10 +115,12 @@ class DatabaseAPI {
 		$res->bind_param("ss", $lottery, $uid);
 		$res->execute();
 		$_SESSION['user']->lottery = $lottery;
-		$RedisAPI = new RedisAPI();
-		$name = json_decode($name, true);
-		$nickname = emoji_unified_to_html($name);
-		$RedisAPI->setLotteryList($name);
+		if ($lottery == 1) {
+			$RedisAPI = new RedisAPI();
+			$name = json_decode($name, true);
+			$nickname = emoji_unified_to_html($name);
+			$RedisAPI->setLotteryList($nickname);
+		}
 	}
 
 	/**
