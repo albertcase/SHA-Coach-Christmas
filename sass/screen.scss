@@ -173,7 +173,7 @@ body{
   @include size(5rem,0.86rem);
   margin: 0.2rem auto 0rem;
   background: #000;
-  font-size: 0.3rem;
+  font-size: 0.36rem;
   color: #fff;
   text-align: center;
   line-height: 0.86rem;
@@ -300,8 +300,17 @@ body{
     display: none;
   }
   &.getcoupon{
+    background: #fff;
     .prize-2{
       display: block;
+      .p3-1{
+        text-align: right;
+        @include size(6.16rem,5.24rem);
+        margin: 0.2rem auto 0.6rem;
+        img{
+          @include size(6.14rem,5.24rem);
+        }
+      }
     }
     .gocoupon{
       display: block;
