@@ -526,7 +526,7 @@ body {
   margin-bottom: 0.5rem;
 }
 #form-contact input[type='text'],
-#form-contact input[type='number'] {
+#form-contact input[type='tel'] {
   width: 5rem;
   height: 0.8rem;
   background: #fff;
