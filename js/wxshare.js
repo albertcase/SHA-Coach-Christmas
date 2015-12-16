@@ -19,6 +19,7 @@ jQuery(document).ready(function(){
                     console.log('share success to friend');
                     CANSHAKE++;
                     $('.share').removeClass('show');
+                    gotoPin(1);
                     service.addChance(function(data){
                         if(data.code){
                             //alert('获得一次抽奖机会');
@@ -46,6 +47,7 @@ jQuery(document).ready(function(){
                 success: function () {
                     console.log('share success to timeline');
                     CANSHAKE++;
+                    gotoPin(1);
                     $('.share').removeClass('show');
                     service.addChance(function(data){
                         if(data.code){
