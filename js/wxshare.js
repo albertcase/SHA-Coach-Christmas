@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
                     $('.share').removeClass('show');
                     service.addChance(function(data){
                         if(data.code){
-                            alert('获得一次抽奖机会');
+                            //alert('获得一次抽奖机会');
                         }else{
                             alert('未登录');
                         }
@@ -49,7 +49,7 @@ jQuery(document).ready(function(){
                     $('.share').removeClass('show');
                     service.addChance(function(data){
                         if(data.code){
-                            alert('获得一次抽奖机会');
+                            //alert('获得一次抽奖机会');
                         }else{
                             alert('未登录');
                         }
@@ -68,7 +68,7 @@ jQuery(document).ready(function(){
         title1: '摇一摇，遇见COACH圣诞好礼',
         des: '感谢您一年的支持，点击即可遇见COACH圣诞好礼！',
         link: window.location.href,
-        img: window.location.href+'img/share.jpg'
+        img: window.location.origin+'/img/share.jpg'
     })
 
 });
