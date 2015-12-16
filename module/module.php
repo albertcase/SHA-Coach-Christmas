@@ -36,96 +36,111 @@ function _access_listener() {
 }
 
 function _api_status() {
-	$UserAPI = new UserAPI();
-	$user = $UserAPI->userLoad(true);
-	if ($user) {
-		print json_encode(array("code" => 1, "msg" => $user->status));
+	if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){ 
+	    // ajax 请求的处理方式 
+		$UserAPI = new UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if ($user) {
+			print json_encode(array("code" => 1, "msg" => $user->status));
+			exit;
+		}
+		print json_encode(array("code" => 0, "msg" => "请先登录"));
 		exit;
 	}
-	print json_encode(array("code" => 0, "msg" => "请先登录"));
-	exit;
 }
 
 function _api_lotterylist() {
-	$RedisAPI = new RedisAPI();
-	$list = $RedisAPI->getLotteryList();
-	if (!$list) {
-		print json_encode(array("code" => 2, "msg" => "没有人中奖"));
+	if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){ 
+	    // ajax 请求的处理方式 
+		$RedisAPI = new RedisAPI();
+		$list = $RedisAPI->getLotteryList();
+		if (!$list) {
+			print json_encode(array("code" => 2, "msg" => "没有人中奖"));
+			exit;
+		}	
+		print json_encode(array("code"=>1,"msg"=>$list));
 		exit;
-	}	
-	print json_encode(array("code"=>1,"msg"=>$list));
-	exit;
+	}
 }
 
 function _api_saveinfo() {
-	$tag = false;
-	$name = isset($_POST['name']) ? $_POST['name'] : $tag = true;
-	$mobile = isset($_POST['mobile']) ? $_POST['mobile'] : $tag = true;
-	if ($tag) {
-		print json_encode(array("code"=>2,"msg"=>"请填写必填项"));
-		exit;
-	}
-	$UserAPI = new UserAPI();
-	$user = $UserAPI->userLoad(true);
-	if ($user) {
-		$DatabaseAPI = new DatabaseAPI();
-		$re = $DatabaseAPI->finishInfo($name, $mobile, $user->uid);
-		if ($re) {
-			print json_encode(array("code"=>1,"msg"=>"提交成功"));
+	if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){ 
+	    // ajax 请求的处理方式 
+		$tag = false;
+		$name = isset($_POST['name']) ? $_POST['name'] : $tag = true;
+		$mobile = isset($_POST['mobile']) ? $_POST['mobile'] : $tag = true;
+		if ($tag) {
+			print json_encode(array("code"=>2,"msg"=>"请填写必填项"));
 			exit;
 		}
+		$UserAPI = new UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if ($user) {
+			$DatabaseAPI = new DatabaseAPI();
+			$re = $DatabaseAPI->finishInfo($name, $mobile, $user->uid);
+			if ($re) {
+				print json_encode(array("code"=>1,"msg"=>"提交成功"));
+				exit;
+			}
+		}
+		print json_encode(array("code"=>0,"msg"=>"请先登录"));
+		exit;
 	}
-	print json_encode(array("code"=>0,"msg"=>"请先登录"));
-	exit;
 }
 
 function _api_lottery() {
-	$UserAPI = new UserAPI();
-	$user = $UserAPI->userLoad(true);
-	if ($user) {
-		$DatabaseAPI = new DatabaseAPI();
-		if ($user->status == 0) {
-			print json_encode(array("code"=>4,"msg"=>"没有抽奖机会"));
-		    exit;
-		}
-		$_SESSION['user']->status = 0;
-		if ($user->lottery > 0) {
-			//只能中卡券
-			print json_encode(array("code"=>2,"msg"=>"卡券"));
-		    exit;
-		}
-		$rand = rand(1, 10000);
-		if ($rand <= 5000) {
-			//包包
-			$totalcount = $DatabaseAPI->totalcount();
-			if ($totalcount>=30) {
-				$DatabaseAPI->setPrizeRecord($user->uid, 2);
-				print json_encode(array("code"=>3,"msg"=>"未中奖"));
+	if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){ 
+	    // ajax 请求的处理方式 
+		$UserAPI = new UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if ($user) {
+			$DatabaseAPI = new DatabaseAPI();
+			if ($user->status == 0) {
+				print json_encode(array("code"=>4,"msg"=>"没有抽奖机会"));
 			    exit;
 			}
-			$DatabaseAPI->setPrizeRecord($user->uid, 1);
-			print json_encode(array("code"=>1,"msg"=>"礼品"));
+			$_SESSION['user']->status = 0;
+			if ($user->lottery > 0) {
+				//只能中卡券
+				print json_encode(array("code"=>2,"msg"=>"卡券"));
+			    exit;
+			}
+			$rand = rand(1, 100000);
+			if ($rand <= 25) {
+				//包包
+				$totalcount = $DatabaseAPI->totalcount();
+				if ($totalcount>=30) {
+					$DatabaseAPI->setPrizeRecord($user->uid, 2);
+					print json_encode(array("code"=>3,"msg"=>"未中奖"));
+				    exit;
+				}
+				$DatabaseAPI->setPrizeRecord($user->uid, 1);
+				print json_encode(array("code"=>1,"msg"=>"礼品"));
+			    exit;
+			}
+			//未中奖
+			$DatabaseAPI->setPrizeRecord($user->uid, 2);
+			print json_encode(array("code"=>3,"msg"=>"未中奖"));
 		    exit;
 		}
-		//未中奖
-		$DatabaseAPI->setPrizeRecord($user->uid, 2);
-		print json_encode(array("code"=>3,"msg"=>"未中奖"));
-	    exit;
+		print json_encode(array("code"=>0,"msg"=>"请先登录"));
+		exit;
 	}
-	print json_encode(array("code"=>0,"msg"=>"请先登录"));
-	exit;
 }
 
 function _api_share() {
-	$UserAPI = new UserAPI();
-	$user = $UserAPI->userLoad(true);
-	if ($user) {
-		$_SESSION['user']->status = 1;
-		print json_encode(array("code"=>1,"msg"=>"分享成功"));
+	if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){ 
+	    // ajax 请求的处理方式 
+		$UserAPI = new UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if ($user) {
+			$_SESSION['user']->status = 1;
+			print json_encode(array("code"=>1,"msg"=>"分享成功"));
+			exit;
+		}
+		print json_encode(array("code"=>0,"msg"=>"请先登录"));
 		exit;
 	}
-	print json_encode(array("code"=>0,"msg"=>"请先登录"));
-	exit;
 }
 
 ?>
