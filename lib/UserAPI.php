@@ -24,7 +24,6 @@ class UserAPI {
 	public function userLogin($openid){
 		$result = $this->_db->findUserByOpenid($openid);
 		$user = $result ? $result : $this->userRegister($openid);
-		$_SESSION['user']->openid = $openid;
 		return $user;
 	}
 
