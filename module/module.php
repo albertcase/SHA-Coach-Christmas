@@ -2,7 +2,7 @@
 
 function _wechat_getdata() {
 	$data = $GLOBALS['HTTP_RAW_POST_DATA'];
-	$data['data']['openid'];
+	$data = json_decode($data, true);
 	$DatabaseAPI = new DatabaseAPI();
 	$DatabaseAPI->regUser($data['data']['openid'], $data['data']['nickname'], $data['data']['headimgurl']);
 	exit;
