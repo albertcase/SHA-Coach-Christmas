@@ -31,6 +31,21 @@ class DatabaseAPI {
 		}
 	}
 
+	public function regUser($openid, $nickname, $headimgurl) {
+		if ($this->findUserByOpenid($openid)) {
+			return TRUE
+		}
+		$sql = "INSERT INTO `coach_xmas_info` SET `openid` = ?, nickname = ?, basename = ?, headimgurl = ?, lottery = 0";
+		$res = $this->db->prepare($sql); 
+		$basename = json_encode(array('name' => $nickname));
+		$res->bind_param("ssss", $openid, $nickname, $basename, $headimgurl);
+		if ($res->execute()) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
 	/**
 	 * Create user in database
 	 */
@@ -113,6 +128,20 @@ class DatabaseAPI {
 		$sql = "SELECT count(*) FROM `coach_xmas_lottery` WHERE `uid` = ?"; 
 		$res = $this->db->prepare($sql);
 		$res->bind_param("s", $uid);
+		$res->execute();
+		$res->bind_result($num);
+		if($res->fetch()) {
+			return $num;
+		}
+		return 0;
+	}
+
+	/**
+	 * check prize record
+	 */
+	public function totalcount(){
+		$sql = "SELECT count(*) FROM `coach_xmas_lottery` WHERE `pid` = 1"; 
+		$res = $this->db->prepare($sql);
 		$res->execute();
 		$res->bind_result($num);
 		if($res->fetch()) {
