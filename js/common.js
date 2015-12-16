@@ -1,5 +1,5 @@
 //just for test
-//var CANSHAKE = 0;
+var CANSHAKE = 0;
 
 function addCard(i) {
 	wx.addCard({
@@ -122,9 +122,15 @@ jQuery(document).ready(function($){
 				}else if(data.code==3){
 					//3 未中奖
 					gotoPin(3);
+				}else if(data.code==4){
+					//无中奖权限
+					$('.share').addClass('show');
+					alert(data.msg);
+				}else if(data.code==0){
+					//未登录
+					alert(data.msg);
 				}else{
-					//重新刷新
-					window.location.reload();
+					alert('未知错误');
 				}
 			});
 		}
@@ -135,7 +141,7 @@ jQuery(document).ready(function($){
 		if($(this).hasClass('p1-3')){
 			//go shake page
 			gotoPin(1);
-			if(CANSHAKE){
+			if(CANSHAKE=='1'){
 				enableShake = true;
 			}else{
 				enableShake = false;
@@ -187,31 +193,41 @@ jQuery(document).ready(function($){
 
 
 //test
-//	$('.p2-3').on('click',function(){
-//		service.isPrize(function(data){
-//			console.log(data);
-//			//code msg
-//			//0 未登录
-//			//1 礼券
-//			//2 卡包
-//			//3 未中奖
-//			if(data.code==1){
-//				//1 礼券
-//				gotoPin(2);
-//				$('.pin-3').addClass('getcoupon');
-//			}else if(data.code==2){
-//				//2 卡包
-//				gotoPin(2);
-//				$('.pin-3').removeClass('getcoupon');
-//			}else if(data.code==3){
-//				//3 未中奖
-//				gotoPin(3);
-//			}else{
-//				//重新刷新
-//				alert(data.msg);
-//			}
-//		});
-//	});
+	$('.p2-2').on('click',function(){
+		if($('.pin-2').hasClass('current') && enableShake){
+			CANSHAKE--;
+			console.log('start api');
+			service.isPrize(function(data){
+				console.log(data);
+				//code msg
+				//0 未登录
+				//1 礼券
+				//2 卡包
+				//3 未中奖
+				if(data.code==1){
+					//1 礼券
+					gotoPin(2);
+					$('.pin-3').addClass('getcoupon');
+				}else if(data.code==2){
+					//2 卡包
+					gotoPin(2);
+					$('.pin-3').removeClass('getcoupon');
+				}else if(data.code==3){
+					//3 未中奖
+					gotoPin(3);
+				}else if(data.code==4){
+					//无中奖权限
+					$('.share').addClass('show');
+					alert(data.msg);
+				}else if(data.code==0){
+					//未登录
+					alert(data.msg);
+				}else{
+					alert('未知错误');
+				}
+			});
+		}
+	});
 //
 //	$('.p2-t1').on('click',function(){
 //		service.addChance(function(data){
