@@ -103,11 +103,8 @@ function loadImg() {
 }
 
 jQuery(document).ready(function($){
-	//var enableShake = true;
 	//preload all the images
 	loadImg();
-	//gotoPin(0);
-	//$('#marquee .list').marquee();
 	//register shake
 	var pin2Shake = new Shake({
 		threshold: 10, //default velocity threshold for shake to register
@@ -120,9 +117,7 @@ jQuery(document).ready(function($){
 		//put your own code here etc.
 		if($('.pin-2').hasClass('current') && parseInt(CANSHAKE)){
 			CANSHAKE--;
-			console.log('start api');
 			service.isPrize(function(data){
-				console.log(data);
 				//code msg
 				//0 未登录
 				//1 礼券
@@ -204,60 +199,6 @@ jQuery(document).ready(function($){
 		gotoPin(6);
 		_hmt.push(['_trackEvent', 'buttons', 'click', '活动细则']);
 	});
-
-
-
-
-
-//test
-	$('.p2-2').on('click',function(){
-		if($('.pin-2').hasClass('current') && enableShake){
-			CANSHAKE--;
-			console.log('start api');
-			service.isPrize(function(data){
-				console.log(data);
-				//code msg
-				//0 未登录
-				//1 礼券
-				//2 卡包
-				//3 未中奖
-				if(data.code==1){
-					//1 礼券
-					gotoPin(2);
-					$('.pin-3').addClass('getcoupon');
-				}else if(data.code==2){
-					//2 卡包
-					gotoPin(2);
-					$('.pin-3').removeClass('getcoupon');
-				}else if(data.code==3){
-					//3 未中奖
-					gotoPin(3);
-				}else if(data.code==4){
-					//无中奖权限
-					$('.share').addClass('show');
-					alert(data.msg);
-				}else if(data.code==0){
-					//未登录
-					alert(data.msg);
-				}else{
-					alert('未知错误');
-				}
-			});
-		}
-	});
-//
-//	$('.p2-t1').on('click',function(){
-//		service.addChance(function(data){
-//			alert(data.code);
-//			if(data.code){
-//				alert('获得一次抽奖机会');
-//			}else{
-//				alert('未登录');
-//			}
-//		});
-//	});
-
-
 
 
 });
