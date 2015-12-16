@@ -1,5 +1,5 @@
 //just for test
-var CANSHAKE = 0;
+//var CANSHAKE = 0;
 
 function addCard(i) {
 	wx.addCard({
