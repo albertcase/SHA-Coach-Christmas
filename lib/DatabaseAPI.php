@@ -106,7 +106,7 @@ class DatabaseAPI {
 	 */
 	public function finishInfo($name, $mobile, $uid){
 		$sql="INSERT INTO `coach_xmas_list` SET `name` = ?, `mobile` = ?, uid = ?";
-		$this->db->query('set names utf-8');
+		$this->db->query('set names gbk');
 		$res = $this->db->prepare($sql);
 		$res->bind_param("sss", $name, $mobile, $uid);
 		if($res->execute()) {
