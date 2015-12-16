@@ -18,6 +18,10 @@ class DatabaseAPI {
 	 * Create user in database
 	 */
 	public function insertUser($openid){
+		$user = $this->findUserByOpenid($openid);
+		if ($user) {
+			return $user;
+		}
 		$WechatAPI = new WechatAPI();
 		$info = $WechatAPI->getUserInfo($openid);
 		$basename = json_encode(array('name' => $info['data']['nickname']));
