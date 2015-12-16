@@ -19,6 +19,7 @@ jQuery(document).ready(function(){
                     console.log('share success to friend');
                     CANSHAKE++;
                     $('.share').removeClass('show');
+                    gotoPin(1);
                     service.addChance(function(data){
                         if(data.code){
                             //alert('获得一次抽奖机会');
@@ -46,6 +47,7 @@ jQuery(document).ready(function(){
                 success: function () {
                     console.log('share success to timeline');
                     CANSHAKE++;
+                    gotoPin(1);
                     $('.share').removeClass('show');
                     service.addChance(function(data){
                         if(data.code){
@@ -65,7 +67,7 @@ jQuery(document).ready(function(){
     }
 
     weixinshare({
-        title1: '摇一摇，遇见COACH圣诞好礼',
+        title1: '50份COACH圣诞福袋摇回家',
         des: '感谢您一年的支持，点击即可遇见COACH圣诞好礼！',
         link: window.location.href,
         img: window.location.origin+'/img/share.jpg'
