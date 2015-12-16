@@ -120,18 +120,13 @@ class DatabaseAPI {
 	 * Add prize record
 	 */
 	public function setPrizeRecord($uid, $lottery) {
-		$nowtime = date("Y-m-d H:i:s");
-		$sql = "INSERT INTO `coach_xmas_lottery` SET `uid` = ?, `lottery` = ?, `createtime` = ?";
-		$res = $this->db->prepare($sql); 
-		$res->bind_param("sss", $uid, $lottery, $nowtime);
-		$res->execute();
 		$sql = "UPDATE `coach_xmas_info` SET `lottery` = ? WHERE id = ?";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("ss", $lottery, $uid);
 		$res->execute();
 		$_SESSION['user']->lottery = $lottery;
 		if ($lottery == 1) {
-			$sql = "SELECT nickname FROM `coach_xmas_lottery` WHERE `openid` = ?"; 
+			$sql = "SELECT nickname FROM `coach_xmas_oauth` WHERE `openid` = ?"; 
 			$res = $this->db->prepare($sql);
 			$res->bind_param("s", $_SESSION['user']->openid);
 			$res->execute();
@@ -145,23 +140,8 @@ class DatabaseAPI {
 	/**
 	 * check prize record
 	 */
-	public function checkLottery($uid){
-		$sql = "SELECT count(*) FROM `coach_xmas_lottery` WHERE `uid` = ?"; 
-		$res = $this->db->prepare($sql);
-		$res->bind_param("s", $uid);
-		$res->execute();
-		$res->bind_result($num);
-		if($res->fetch()) {
-			return $num;
-		}
-		return 0;
-	}
-
-	/**
-	 * check prize record
-	 */
 	public function totalcount(){
-		$sql = "SELECT count(*) FROM `coach_xmas_lottery` WHERE `pid` = 1"; 
+		$sql = "SELECT count(*) FROM `coach_xmas_info` WHERE `lottery` = 1"; 
 		$res = $this->db->prepare($sql);
 		$res->execute();
 		$res->bind_result($num);
