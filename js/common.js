@@ -86,7 +86,7 @@ function loadImg() {
 }
 
 jQuery(document).ready(function($){
-	var enableShake = true;
+	//var enableShake = true;
 	//preload all the images
 	loadImg();
 	//gotoPin(0);
@@ -101,7 +101,7 @@ jQuery(document).ready(function($){
 	function shakeEventDidOccur () {
 
 		//put your own code here etc.
-		if($('.pin-2').hasClass('current') && enableShake){
+		if($('.pin-2').hasClass('current') && parseInt(CANSHAKE)){
 			CANSHAKE--;
 			console.log('start api');
 			service.isPrize(function(data){
@@ -141,10 +141,10 @@ jQuery(document).ready(function($){
 		if($(this).hasClass('p1-3')){
 			//go shake page
 			gotoPin(1);
-			if(CANSHAKE=='1'){
-				enableShake = true;
+			if(parseInt(CANSHAKE)>0){
+				//enableShake = true;
 			}else{
-				enableShake = false;
+				//enableShake = false;
 				$('.share').addClass('show');
 			}
 		}else if($(this).hasClass('gocoupon')){
