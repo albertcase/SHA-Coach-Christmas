@@ -152,14 +152,14 @@ jQuery(document).ready(function($){
 	}
 
 //	click buttons==>
-	$('.buttons').on('click', function(){
+	$('.buttons').on('touchstart', function(){
 		if($(this).hasClass('p1-3')){
 			//go shake page 我要摇奖
+			_hmt.push(['_trackEvent', 'buttons', 'click', '我要摇奖']);
 			gotoPin(1);
 			if(!parseInt(CANSHAKE)>0){
 				$('.share').addClass('show');
 			}
-			_hmt.push(['_trackEvent', 'buttons', 'click', '我要摇奖']);
 		}else if($(this).hasClass('gocoupon')){
 
 			if($(this).hasClass('coupon-1')){
@@ -195,7 +195,7 @@ jQuery(document).ready(function($){
 	});
 
 	//活动规则
-	$('.p1-5').on('click', function(){
+	$('.p1-5').on('touchstart', function(){
 		gotoPin(6);
 		_hmt.push(['_trackEvent', 'buttons', 'click', '活动细则']);
 	});
