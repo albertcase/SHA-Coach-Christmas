@@ -22,7 +22,7 @@ gulp.task('concatjqueryrem', function() {
 });
 
 gulp.task('concatscriptall', function() {
-    return gulp.src(['js/marquee.js','js/service.js','js/wxshare.js','js/shake.js', 'js/common.js'])
+    return gulp.src(['js/pre-loader.js','js/marquee.js','js/service.js','js/wxshare.js','js/shake.js', 'js/common.js'])
         .pipe(concat('all.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));

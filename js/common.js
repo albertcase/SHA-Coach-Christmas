@@ -32,79 +32,56 @@ function gotoPin(i) {
 	$pin.removeClass('current').eq(i).addClass('current');
 }
 
-function isWeiXin() {
-	var ua = window.navigator.userAgent.toLowerCase();
-	if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-		return true;
-	} else {
-		return false;
-	}
-}
-function imgLoadDeferred($container) {
-	var deferred = $.Deferred();
-	var $img = $($container).find('img');
-	var count = 0;
-	deferred.notify(count, $img.length);
-	$img.on('load error', function(e) {
-		count++;
-		deferred.notify(count, $img.length);
-		if (count >= $img.length) {
-			deferred.resolve();
-		}
-	});
-	return deferred.promise();
-}
-
-function loadImg() {
-	$('.wrap img').each(function(i, elem) {
-		this.src0 = this.src;
-		this.src = '';
-	});
-	imgLoadDeferred($('.wrap')).done(function() {
-		$('.wrap img').each(function(i, elem) {
-			this.src = this.src0;
-		});
-		imgLoadDeferred($('.wrap')).progress(function(count, length) {
-			var progress = parseInt(count*100 / length)+'%';
-		}).done(function() {
-
-			//Hide the loading page
-			var loadtime = setTimeout(function(){
-				$('.preloading').remove();
-				if(!$('.qrcode').length){
-					gotoPin(0);
-				}
-				//跑马灯效果
-				//$('#marquee .list').marquee();
-				var marEle = $('#marquee .list');
-				service.marqueeList(function(data){
-					if(data.code==1){
-						var listData = data.msg,
-							listHtml = '';
-						for(var i=0;i<listData.length;i++){
-							listHtml = listHtml+'<li>'+listData[i]+'已经中奖</li>';
-						}
-						marEle.append(listHtml);
-						marEle.marquee();
-					}else if(data.code==2){
-						marEle.append('<li>'+data.msg+'</li>');
-						marEle.marquee();
-					}else{
-						console.log(data.msg);
-					}
-				});
-				clearTimeout(loadtime);
-			},1000);
-			$('.wrap img').each(function(i, elem) {
-				this.src = this.src0;
-			});
-		});
-	});
-}
-
 jQuery(document).ready(function($){
-	//preload all the images
-	loadImg();
+
+	//preload page0
+	var imagesArray = [
+		'/img/bg.jpg',
+		'/img/loading-logo.png',
+		'/img/logo.png',
+		'/img/mar2.png',
+		'/img/qrcode.png',
+		'/img/share-3.png',
+		'/img/dog-1.jpg',
+		'/img/dog-2-2.png',
+		'/img/dog-2.png',
+		'/img/dog-3.png',
+		'/img/dog-4.png',
+		'/img/icon-sp.png',
+		'/img/p1-1.png',
+		'/img/share.jpg'
+	];
+	new preLoader(imagesArray, {
+		onProgress: function(){
+
+		},
+		onComplete: function(){
+			$('.preloading').remove();
+			if(!$('.qrcode').length){
+				gotoPin(0);
+			}
+			//跑马灯效果
+			//$('#marquee .list').marquee();
+			var marEle = $('#marquee .list');
+			service.marqueeList(function(data){
+				if(data.code==1){
+					var listData = data.msg,
+						listHtml = '';
+					for(var i=0;i<listData.length;i++){
+						listHtml = listHtml+'<li>'+listData[i]+'已经中奖</li>';
+					}
+					marEle.append(listHtml);
+					marEle.marquee();
+				}else if(data.code==2){
+					marEle.append('<li>'+data.msg+'</li>');
+					marEle.marquee();
+				}else{
+					console.log(data.msg);
+				}
+			});
+		}
+	})
+
 	//register shake
 	var pin2Shake = new Shake({
 		threshold: 10, //default velocity threshold for shake to register
