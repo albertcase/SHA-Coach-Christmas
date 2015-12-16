@@ -23,11 +23,9 @@ class DatabaseAPI {
 			return $user;
 		}
 		$WechatAPI = new WechatAPI();
-		$info = $WechatAPI->getUserInfo($openid);
-		$basename = json_encode(array('name' => $info['data']['nickname']));
-		$sql = "INSERT INTO `coach_xmas_info` SET `openid` = ?, nickname = ?, basename = ?, headimgurl = ?, lottery = 0";
+		$sql = "INSERT INTO `coach_xmas_info` SET `openid` = ?, lottery = 0";
 		$res = $this->db->prepare($sql); 
-		$res->bind_param("ssss", $openid, $info['data']['nickname'], $basename, $info['data']['headimgurl']);
+		$res->bind_param("s", $openid);
 		if ($res->execute()) {
 			return $this->findUserByOpenid($openid);
 		} else {
@@ -39,7 +37,7 @@ class DatabaseAPI {
 		if ($this->findUserByOpenid($openid)) {
 			return TRUE;
 		}
-		$sql = "INSERT INTO `coach_xmas_info` SET `openid` = ?, nickname = ?, basename = ?, headimgurl = ?, lottery = 0";
+		$sql = "INSERT INTO `coach_xmas_oauth` SET `openid` = ?, nickname = ?, basename = ?, headimgurl = ?";
 		$res = $this->db->prepare($sql); 
 		$basename = json_encode(array('name' => $nickname));
 		$res->bind_param("ssss", $openid, $nickname, $basename, $headimgurl);
@@ -57,19 +55,17 @@ class DatabaseAPI {
 		if (isset($_SESSION['user'])) {
 			return $_SESSION['user'];
 		}
-		$sql = "SELECT id,openid,basename,lottery  FROM `coach_xmas_info` WHERE `openid` = ?"; 
+		$sql = "SELECT id,openid,lottery  FROM `coach_xmas_info` WHERE `openid` = ?"; 
 		$res = $this->db->prepare($sql);
 		$res->bind_param("s", $openid);
 		$res->execute();
-		$res->bind_result($uid, $openid, $basename, $lottery);
+		$res->bind_result($uid, $openid, $lottery);
 		if($res->fetch()) {
 			$user = new stdClass();
 			$user->uid = $uid;
 			$user->openid = $openid;
-			$user->basename = $basename;
 			$user->lottery = $lottery;
 			$user->status = 1;
-
 			$_SESSION['user'] = $user;
 			return $user;
 		}
@@ -108,7 +104,7 @@ class DatabaseAPI {
 	/**
 	 * Add prize record
 	 */
-	public function setPrizeRecord($uid, $lottery, $name){
+	public function setPrizeRecord($uid, $lottery) {
 		$nowtime = date("Y-m-d H:i:s");
 		$sql = "INSERT INTO `coach_xmas_lottery` SET `uid` = ?, `lottery` = ?, `createtime` = ?";
 		$res = $this->db->prepare($sql); 
@@ -120,9 +116,13 @@ class DatabaseAPI {
 		$res->execute();
 		$_SESSION['user']->lottery = $lottery;
 		if ($lottery == 1) {
+			$sql = "SELECT nickname FROM `coach_xmas_lottery` WHERE `openid` = ?"; 
+			$res = $this->db->prepare($sql);
+			$res->bind_param("s", $_SESSION['user']->openid);
+			$res->execute();
+			$res->bind_result($nickname);
+			$res->fetch();
 			$RedisAPI = new RedisAPI();
-			$name = json_decode($name, true);
-			$nickname = emoji_unified_to_html($name);
 			$RedisAPI->setLotteryList($nickname);
 		}
 	}

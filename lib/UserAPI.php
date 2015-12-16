@@ -9,14 +9,14 @@ class UserAPI {
 	}
 
 	public function userLoad($type = false){
-		if(isset($_SESSION['openid'])){
-			return $this->userLogin($_SESSION['openid']);
+		if(isset($_SESSION['user'])){
+			return $this->userLogin($_SESSION['user']->openid);
 		} else {
 			if ($type == true) {
 				return false;
 			}
 			$WechatAPI = new WechatAPI();
-			$WechatAPI->wechatAuthorize($_SERVER['REQUEST_URI']);
+			$WechatAPI->wechatAuthorize();
 		}
 		
 	}
@@ -24,7 +24,7 @@ class UserAPI {
 	public function userLogin($openid){
 		$result = $this->_db->findUserByOpenid($openid);
 		$user = $result ? $result : $this->userRegister($openid);
-		$_SESSION['openid'] = $openid;
+		$_SESSION['user']->openid = $openid;
 		return $user;
 	}
 

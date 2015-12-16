@@ -99,16 +99,16 @@ function _api_lottery() {
 			//包包
 			$totalcount = $DatabaseAPI->totalcount();
 			if ($totalcount>=30) {
-				$DatabaseAPI->setPrizeRecord($user->uid, 2, $user->basename);
+				$DatabaseAPI->setPrizeRecord($user->uid, 2);
 				print json_encode(array("code"=>3,"msg"=>"未中奖"));
 			    exit;
 			}
-			$DatabaseAPI->setPrizeRecord($user->uid, 1, $user->basename);
+			$DatabaseAPI->setPrizeRecord($user->uid, 1);
 			print json_encode(array("code"=>1,"msg"=>"礼品"));
 		    exit;
 		}
 		//未中奖
-		$DatabaseAPI->setPrizeRecord($user->uid, 2, $user->basename);
+		$DatabaseAPI->setPrizeRecord($user->uid, 2);
 		print json_encode(array("code"=>3,"msg"=>"未中奖"));
 	    exit;
 	}
