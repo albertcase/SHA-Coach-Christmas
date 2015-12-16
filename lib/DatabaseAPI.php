@@ -33,7 +33,7 @@ class DatabaseAPI {
 
 	public function regUser($openid, $nickname, $headimgurl) {
 		if ($this->findUserByOpenid($openid)) {
-			return TRUE
+			return TRUE;
 		}
 		$sql = "INSERT INTO `coach_xmas_info` SET `openid` = ?, nickname = ?, basename = ?, headimgurl = ?, lottery = 0";
 		$res = $this->db->prepare($sql); 
