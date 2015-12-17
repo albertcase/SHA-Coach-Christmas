@@ -39,6 +39,7 @@ class RedisAPI {
 		for ($i = 0; $i < count($rs); $i++) {
 			$this->redis->lPush("coach_lottery_list", $rs[$i]);
 		}
+		$arList = $this->redis->lrange("coach_lottery_list", 0 ,-1);
 		return $arList;
 	}
 
