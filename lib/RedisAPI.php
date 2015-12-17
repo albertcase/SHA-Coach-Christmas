@@ -1,6 +1,6 @@
 <?php
 /**
- * DatabaseAPI class
+ * RedisAPI class
  */
 class RedisAPI {
 
@@ -30,6 +30,12 @@ class RedisAPI {
    		$this->redis->lPush("coach_lottery_list", $nickname);
    		$arList = $this->redis->lrange("coach_lottery_list", 0 ,-1);
    		return $arList;
+	}
+
+	public function refreshList(){
+		$this->redis->delete("coach_lottery_list");
+		$DatabaseAPI = new DatabaseAPI();
+		$rs = $DatabaseAPI->loadLotteryList();var_dump($rs);die;
 	}
 
 

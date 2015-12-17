@@ -22,7 +22,6 @@ class DatabaseAPI {
 		if ($user) {
 			return $user;
 		}
-		$WechatAPI = new WechatAPI();
 		$sql = "INSERT INTO `coach_xmas_info` SET `openid` = ?, lottery = 0";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("s", $openid);
@@ -91,7 +90,7 @@ class DatabaseAPI {
 	 * load prize record
 	 */
 	public function loadLotteryList(){
-		$sql="SELECT basename FROM  `coach_xmas_info` where id in (SELECT id FROM `coach_xmas_lottery` WHERE `lottery` =1)";
+		$sql="SELECT basename FROM  `coach_xmas_oauth` a, `coach_xmas_info` b, where b.openid = a.openid and b.lottery=1";
 		$res = $this->db->query($sql);
 		if ($res->num_rows<=0) {
 			return false;
@@ -151,6 +150,8 @@ class DatabaseAPI {
 		}
 		return 0;
 	}
+
+
 
 
 }

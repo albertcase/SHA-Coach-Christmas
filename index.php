@@ -14,6 +14,7 @@ $routers['/api/lotterylist'] = '_api_lotterylist';
 $routers['/api/saveinfo'] = '_api_saveinfo';
 $routers['/api/lottery'] = '_api_lottery';
 $routers['/api/share'] = '_api_share';
+$routers['/api/refreshlist'] = '_api_refreshlist';
 
 $listener = array();
 $listener[] = '/';

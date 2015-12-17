@@ -143,4 +143,8 @@ function _api_share() {
 	}
 }
 
+function _api_refreshlist() {
+	$RedisAPI = new RedisAPI();
+	$RedisAPI->refreshList();
+}
 ?>
