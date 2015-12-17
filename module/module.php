@@ -145,6 +145,7 @@ function _api_share() {
 
 function _api_refreshlist() {
 	$RedisAPI = new RedisAPI();
-	$RedisAPI->refreshList();
+	$list = $RedisAPI->refreshList();
+	print json_encode(array("code"=>1,"msg"=>$list));
 }
 ?>
