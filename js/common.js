@@ -1,5 +1,5 @@
 //just for test
-//var CANSHAKE = 0;
+//var CANSHAKE = 100;
 
 function addCard(i) {
 	wx.addCard({
@@ -89,8 +89,10 @@ jQuery(document).ready(function($){
 	});
 	pin2Shake.start();
 	window.addEventListener('shake', shakeEventDidOccur, false);
+	var enableShake = true;
 	function shakeEventDidOccur () {
-
+		if(!enableShake) return;
+		enableShake = false;
 		//put your own code here etc.
 		if($('.pin-2').hasClass('current') && parseInt(CANSHAKE)){
 			CANSHAKE--;
@@ -100,6 +102,7 @@ jQuery(document).ready(function($){
 				//1 礼券
 				//2 卡包
 				//3 未中奖
+				enableShake = true;
 				if(data.code==1){
 					//1 礼券
 					gotoPin(2);
