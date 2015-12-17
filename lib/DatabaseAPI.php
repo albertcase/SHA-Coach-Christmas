@@ -132,9 +132,10 @@ class DatabaseAPI {
 			$res->bind_param("s", $_SESSION['user']->openid);
 			$res->execute();
 			$res->bind_result($nickname);
-			$res->fetch();
-			$RedisAPI = new RedisAPI();
-			$RedisAPI->setLotteryList($nickname);
+			if($res->fetch()) {
+				$RedisAPI = new RedisAPI();
+				$RedisAPI->setLotteryList($nickname);
+			}
 		}
 	}
 
