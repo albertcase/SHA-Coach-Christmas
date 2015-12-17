@@ -90,7 +90,7 @@ class DatabaseAPI {
 	 * load prize record
 	 */
 	public function loadLotteryList(){
-		$sql="SELECT basename FROM  `coach_xmas_oauth` a, `coach_xmas_info` b where b.openid = a.openid and b.lottery=1";
+		$sql="SELECT nickname FROM  `coach_xmas_oauth` a, `coach_xmas_info` b where b.openid = a.openid and b.lottery=1";
 		$res = $this->db->query($sql);
 		if ($res->num_rows<=0) {
 			return false;
