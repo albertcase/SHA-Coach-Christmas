@@ -93,7 +93,7 @@ class DatabaseAPI {
 		$sql="SELECT nickname FROM  `coach_xmas_oauth` a, `coach_xmas_info` b where b.openid = a.openid and b.lottery=1";
 		$res = $this->db->query($sql);
 		$data = array();
-		while($row = $result->fetch_array(MYSQLI_ASSOC))
+		while($row = $res->fetch_array(MYSQLI_ASSOC))
 		{
 			$data[] = $row;
 		}
