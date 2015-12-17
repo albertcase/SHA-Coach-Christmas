@@ -35,21 +35,22 @@ function gotoPin(i) {
 jQuery(document).ready(function($){
 
 	//preload page0
+	var baseurl = "http://coachxmas.samesamechina.com";
 	var imagesArray = [
-		'/img/v2/bg.jpg',
-		'/img/loading-logo.png',
-		'/img/logo.png',
-		'/img/mar2.png',
-		'/img/qrcode.png',
-		'/img/share-3.png',
-		'/img/v2/dog-1.jpg',
-		'/img/v2/dog-2-2.png',
-		'/img/v2/dog-2.png',
-		'/img/v2/dog-3.png',
-		'/img/v2/dog-4.png',
-		'/img/v2/icon-sp.png',
-		'/img/v2/p1-1.png',
-		'/img/share.jpg'
+		baseurl + '/img/v2/bg.jpg',
+		baseurl + '/img/loading-logo.png',
+		baseurl + '/img/logo.png',
+		baseurl + '/img/mar2.png',
+		baseurl + '/img/qrcode.png',
+		baseurl + '/img/share-3.png',
+		baseurl + '/img/v2/dog-1.jpg',
+		baseurl + '/img/v2/dog-2-2.png',
+		baseurl + '/img/v2/dog-2.png',
+		baseurl + '/img/v2/dog-3.png',
+		baseurl + '/img/v2/dog-4.png',
+		baseurl + '/img/v2/icon-sp.png',
+		baseurl + '/img/v2/p1-1.png',
+		baseurl + '/img/share.jpg'
 	];
 	new preLoader(imagesArray, {
 		onProgress: function(){
