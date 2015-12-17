@@ -111,6 +111,9 @@ body{
   height: 100%;
   position: absolute;
   z-index: 1;
+  &.landscape{
+    background-size: 100%;
+  }
 }
 //for wrap
 .wrap{
