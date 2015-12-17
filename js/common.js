@@ -61,24 +61,22 @@ jQuery(document).ready(function($){
 				gotoPin(0);
 			}
 			//跑马灯效果
-			//$('#marquee .list').marquee();
 			var marEle = $('#marquee .list');
-			service.marqueeList(function(data){
-				if(data.code==1){
-					var listData = data.msg,
-						listHtml = '';
-					for(var i=0;i<listData.length;i++){
-						listHtml = listHtml+'<li>'+listData[i]+'已经中奖</li>';
-					}
-					marEle.append(listHtml);
-					marEle.marquee();
-				}else if(data.code==2){
-					marEle.append('<li>'+data.msg+'</li>');
-					marEle.marquee();
-				}else{
-					console.log(data.msg);
+			var data = lotteryList;
+			if(data.code==1){
+				var listData = data.msg,
+					listHtml = '';
+				for(var i=0;i<listData.length;i++){
+					listHtml = listHtml+'<li>'+listData[i]+'已经中奖</li>';
 				}
-			});
+				marEle.append(listHtml);
+				marEle.marquee();
+			}else if(data.code==2){
+				marEle.append('<li>'+data.msg+'</li>');
+				marEle.marquee();
+			}else{
+				console.log(data.msg);
+			}
 		}
 	})
 
