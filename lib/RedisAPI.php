@@ -36,6 +36,7 @@ class RedisAPI {
 		$this->redis->delete("coach_lottery_list");
 		$DatabaseAPI = new DatabaseAPI();
 		$rs = $DatabaseAPI->loadLotteryList();
+		var_dump($rs);
 		for ($i = 0; $i < count($rs); $i++) {
 			$this->redis->lPush("coach_lottery_list", $rs[$i]);
 		}
