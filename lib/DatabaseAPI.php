@@ -91,10 +91,9 @@ class DatabaseAPI {
 	 */
 	public function loadLotteryList(){
 		$sql="SELECT nickname FROM  `coach_xmas_oauth` a, `coach_xmas_info` b where b.openid = a.openid and b.lottery=1";
-		$res = $this->db->query($sql);
-		if ($res->num_rows<=0) {
-			return false;
-		}
+		$res = $this->db->prepare($sql);
+		$res->execute();
+		//$res->bind_result($nickname);
 		$data = $res->fetch_array(MYSQLI_NUM);
 		return $data;
 		
