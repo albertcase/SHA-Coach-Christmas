@@ -21,8 +21,8 @@ function _access_listener() {
 	$user = $UserAPI->userLoad();
 	if ($user) {
 		$wechatAPI = new WechatAPI();
-		//$re = $wechatAPI->isUserSubscribed($user->openid);
-		$re = 1;
+		$re = $wechatAPI->isUserSubscribed($user->openid);
+		//$re = 1;
 		if (!$re) {
 			print file_get_contents(TEMPLATE_ROOT . 'qrcode.html');
 			exit;
