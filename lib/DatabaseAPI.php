@@ -94,7 +94,7 @@ class DatabaseAPI {
 		$res = $this->db->prepare($sql);
 		$res->execute();
 		$res->bind_result($data);
-		$res->fetch();
+		$res->fetch_array();
 		return $data;
 		
 	}
