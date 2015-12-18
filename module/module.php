@@ -34,7 +34,7 @@ function _access_listener() {
 		$RedisAPI = new RedisAPI();
 		$list = $RedisAPI->getLotteryList();
 		if (!$list) {
-			print '<script>var lotteryList = '.json_encode(array("code" => 2, "msg" => "没有人中奖")).'</script>';
+			print '<script>var lotteryList = '.json_encode(array("code" => 2, "msg" => "目前没有人中奖")).'</script>';
 			exit;
 		}	
 		print '<script>var lotteryList = '.json_encode(array("code" => 1, "msg" => $list)).'</script>';
