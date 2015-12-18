@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+ini_set("display_errors", 1);
+Session_Start();
+require_once dirname(__FILE__) . "/conf/config.php";
+$RedisAPI = new RedisAPI();
+$list = $RedisAPI->getLotteryList();
+var_dump($list);
+?> 
+ <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
