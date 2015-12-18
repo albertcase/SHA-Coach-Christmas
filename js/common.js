@@ -1,5 +1,9 @@
 //just for test
 //var CANSHAKE = 100;
+//var lotteryList = {
+//	code:'1',
+//	msg:[1,2,3]
+//}
 
 function addCard(i) {
 	wx.addCard({
@@ -37,9 +41,8 @@ jQuery(document).ready(function($){
 	//preload page0
 	var baseurl = "http://coachxmas.samesamechina.com";
 	var imagesArray = [
-		baseurl + '/img/v2/bg.jpg',
 		baseurl + '/img/loading-logo.png',
-		baseurl + '/img/logo.png',
+		baseurl + '/img/v2/bg.jpg',
 		baseurl + '/img/mar2.png',
 		baseurl + '/img/qrcode.png',
 		baseurl + '/img/share-3.png',

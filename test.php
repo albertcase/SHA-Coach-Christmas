@@ -16,7 +16,7 @@ if (!$re) {
     print file_get_contents(TEMPLATE_ROOT . 'qrcode.html');
     exit;
 }
-//print file_get_contents(TEMPLATE_ROOT . 'home.html');
+print file_get_contents(TEMPLATE_ROOT . 'home.html');
 print '<script>var CANSHAKE="'.$user->status.'";</script>';
 if ($tag == 1) {
     $cardList = $wechatAPI->cardList();
