@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__FILE__) . "/conf/config.php";
 $user = new stdClass();
 $user->uid = 1;
 $user->openid = 'oKCDxjvvyfIqg0lKXNJrc0szWzSg';
