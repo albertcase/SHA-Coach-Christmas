@@ -1,32 +1,26 @@
 <?php
-ini_set("display_errors", 1);
-Session_Start();
-require_once dirname(__FILE__) . "/conf/config.php";
+$user = new stdClass();
+$user->uid = 1;
+$user->openid = 'oKCDxjvvyfIqg0lKXNJrc0szWzSg';
+$user->lottery = 0;
+$user->status = 1;
+$wechatAPI = new WechatAPI();
+$re = $wechatAPI->isUserSubscribed($user->openid);
+//$re = 1;
+if (!$re) {
+    print file_get_contents(TEMPLATE_ROOT . 'qrcode.html');
+    exit;
+}
+print file_get_contents(TEMPLATE_ROOT . 'home.html');
+print '<script>var CANSHAKE="'.$user->status.'";</script>';
+$cardList = $wechatAPI->cardList();
+print '<script>var cardListJSON = '.json_encode($cardList).'</script>';
 $RedisAPI = new RedisAPI();
 $list = $RedisAPI->getLotteryList();
-var_dump($list);
-?> 
- <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>遇见COACH圣诞好礼</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" >
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" type="text/css" href="/dist/style.css"/>
-    <script type="text/javascript" src="/dist/js/jrem.js"></script>
-    <script type="text/javascript">
-    </script>
-</head>
-<body>
-<div class="wrapper">
-    <div class="wrap">
-        <!-- qrcode-->
-        <section class="qrcode">
-            <img src="/img/qrcode.png" alt=""/>
-        </section>
-    </div>
-</div>
-</body>
-</html>
+if (!$list) {
+    print '<script>var lotteryList = '.json_encode(array("code" => 2, "msg" => "没有人中奖")).'</script>';
+    exit;
+}   
+print '<script>var lotteryList = '.json_encode(array("code" => 1, "msg" => $list)).'</script>';
+exit;
+?>
