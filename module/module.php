@@ -117,7 +117,7 @@ function _api_lottery() {
 			if ($rand <= 10) {
 				//包包
 				$totalcount = $DatabaseAPI->totalcount();
-				if ($totalcount>=20) {
+				if ($totalcount>=40) {
 					$DatabaseAPI->setPrizeRecord($user->uid, 2);
 					print json_encode(array("code"=>3,"msg"=>"未中奖"));
 				    exit;
