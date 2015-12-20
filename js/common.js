@@ -1,5 +1,5 @@
 //just for test
-//var CANSHAKE = 100;
+//var CANSHAKE = '1';
 //var lotteryList = {
 //	code:'1',
 //	msg:[1,2,3]
@@ -93,11 +93,11 @@ jQuery(document).ready(function($){
 	window.addEventListener('shake', shakeEventDidOccur, false);
 	var enableShake = true;
 	function shakeEventDidOccur () {
-		if(!enableShake) return;
-		enableShake = false;
 		//put your own code here etc.
 		if($('.pin-2').hasClass('current') && parseInt(CANSHAKE)){
-			CANSHAKE--;
+			if(!enableShake) return;
+			enableShake = false;
+			CANSHAKE='0';
 			service.isPrize(function(data){
 				//code msg
 				//0 未登录
