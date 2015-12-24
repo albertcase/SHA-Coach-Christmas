@@ -114,7 +114,7 @@ function _api_lottery() {
 			    exit;
 			}
 			$rand = rand(1, 100000);
-			if ($rand <= 100) {
+			if ($rand <= 1000) {
 				//包包
 				$totalcount = $DatabaseAPI->totalcount();
 				if ($totalcount>=50) {
